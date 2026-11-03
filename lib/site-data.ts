@@ -10,6 +10,7 @@ export const services = [
   { title: "Intercity transfers", href: "/intercity-transfers", description: "Private travel between Makkah Mukarramah, Madinah Munawwarah and Jeddah." },
   { title: "Ziyarat tours", href: "/ziyarat-tours", description: "Flexible itineraries shaped around your group, preferred stops and availability." },
   { title: "Transport packages", href: "/packages", description: "Transfer bundles with scope, exclusions and arrangements confirmed before booking." },
+  { title: "Group transport", href: "/group-transport", description: "Flexible transport planning for larger parties, organisers and multi-stop journeys." },
 ];
 
 export const routes = [
