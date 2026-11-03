@@ -15,6 +15,11 @@ export const services = [
 
 export const routes = [
   ["Jeddah Airport", "Makkah Mukarramah"],
+  ["Jeddah Airport", "Madinah Munawwarah"],
+  ["Jeddah Airport", "King Abdullah Economic City (KAEC)"],
   ["Makkah Mukarramah", "Madinah Munawwarah"],
+  ["Madinah Munawwarah", "Makkah Mukarramah"],
+  ["Madinah Airport", "Madinah Hotel"],
   ["Madinah Munawwarah", "Jeddah Airport"],
+  ["Makkah Mukarramah", "Jeddah Airport"],
 ];
