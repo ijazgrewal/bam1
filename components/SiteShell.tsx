@@ -1,7 +1,8 @@
 import type { ReactNode } from "react";
 
 export function Header() {
-  return <><header className="nav-shell"><a className="brand" href="/"><span className="brand-mark">B</span><span>BARAKAH <em>AL MADINAH</em></span></a><nav><a href="/services">Services</a><a href="/routes">Routes</a><a href="/fleet">Fleet</a><a href="/packages">Packages</a><a href="/about">About</a><a href="/contact">Contact</a></nav><a className="button button-dark nav-cta" href="/contact#enquiry">Book your ride <span>↗</span></a></header><nav className="mobile-nav" aria-label="Mobile navigation"><a href="/services">Services</a><a href="/routes">Routes</a><a href="/fleet">Fleet</a><a href="/packages">Packages</a><a href="/about">About</a><a href="/contact">Contact</a></nav></>;
+  const links = [["Home", "/"], ["Services", "/services"], ["Airport", "/airport-transfers"], ["Intercity", "/intercity-transfers"], ["Ziyarat", "/ziyarat-tours"], ["Packages", "/packages"], ["Groups", "/group-transport"], ["Routes", "/routes"], ["Fleet", "/fleet"], ["About", "/about"], ["Contact", "/contact"], ["FAQ", "/faq"], ["Policy", "/booking-policy"]] as const;
+  return <><header className="nav-shell"><a className="brand" href="/"><span className="brand-mark">B</span><span>BARAKAH <em>AL MADINAH</em></span></a><nav className="desktop-nav" aria-label="Main navigation">{links.map(([label, href]) => <a href={href} key={href}>{label}</a>)}</nav><a className="button button-dark nav-cta" href="/contact#enquiry">Book your ride <span>↗</span></a></header><nav className="mobile-nav" aria-label="Mobile navigation">{links.map(([label, href]) => <a href={href} key={href}>{label}</a>)}</nav></>;
 }
 
 export function Footer() {
