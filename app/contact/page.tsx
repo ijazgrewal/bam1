@@ -1,0 +1,2 @@
+import { Shell, PageHero } from "../../components/SiteShell"; import { EnquiryForm } from "../../components/EnquiryForm";
+export default function Contact() { return <Shell><PageHero eyebrow="Contact & quotation" title="Send the details. We’ll respond clearly."><p>Official phone, WhatsApp, email and service hours must be inserted here after business verification. Until then, use the secure enquiry form below.</p></PageHero><section className="detail-section" id="enquiry"><h2>Request a quotation</h2><EnquiryForm /></section></Shell> }
