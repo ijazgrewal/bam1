@@ -1,12 +1,11 @@
-import Link from "next/link";
 import type { ReactNode } from "react";
 
 export function Header() {
-  return <><header className="nav-shell"><Link className="brand" href="/"><span className="brand-mark">B</span><span>BARAKAH <em>AL MADINAH</em></span></Link><nav><Link href="/services">Services</Link><Link href="/routes">Routes</Link><Link href="/fleet">Fleet</Link><Link href="/packages">Packages</Link><Link href="/about">About</Link><Link href="/contact">Contact</Link></nav><Link className="button button-dark nav-cta" href="/contact#enquiry">Book your ride <span>↗</span></Link></header><nav className="mobile-nav" aria-label="Mobile navigation"><Link href="/services">Services</Link><Link href="/routes">Routes</Link><Link href="/fleet">Fleet</Link><Link href="/packages">Packages</Link><Link href="/about">About</Link><Link href="/contact">Contact</Link></nav></>;
+  return <><header className="nav-shell"><a className="brand" href="/"><span className="brand-mark">B</span><span>BARAKAH <em>AL MADINAH</em></span></a><nav><a href="/services">Services</a><a href="/routes">Routes</a><a href="/fleet">Fleet</a><a href="/packages">Packages</a><a href="/about">About</a><a href="/contact">Contact</a></nav><a className="button button-dark nav-cta" href="/contact#enquiry">Book your ride <span>↗</span></a></header><nav className="mobile-nav" aria-label="Mobile navigation"><a href="/services">Services</a><a href="/routes">Routes</a><a href="/fleet">Fleet</a><a href="/packages">Packages</a><a href="/about">About</a><a href="/contact">Contact</a></nav></>;
 }
 
 export function Footer() {
-  return <footer><Link className="brand" href="/"><span className="brand-mark">B</span><span>BARAKAH <em>AL MADINAH</em></span></Link><p>Private transport for Umrah, Ziyarat and journeys across the Kingdom.</p><div><Link href="/booking-policy">Booking policy</Link><Link href="/faq">FAQ</Link><Link href="/contact">Contact</Link></div><small>© 2026 Barakah Al Madinah. Business contact details, policies and support hours must be verified before launch.</small></footer>;
+  return <footer><a className="brand" href="/"><span className="brand-mark">B</span><span>BARAKAH <em>AL MADINAH</em></span></a><p>Private transport for Umrah, Ziyarat and journeys across the Kingdom.</p><div><a href="/booking-policy">Booking policy</a><a href="/faq">FAQ</a><a href="/contact">Contact</a></div><small>© 2026 Barakah Al Madinah. Business contact details, policies and support hours must be verified before launch.</small></footer>;
 }
 
 export function PageHero({ eyebrow, title, children }: { eyebrow: string; title: string; children: ReactNode }) {
