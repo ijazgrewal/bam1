@@ -14,12 +14,15 @@ export const services = [
 ];
 
 export const routes = [
-  ["Jeddah Airport", "Makkah Mukarramah"],
-  ["Jeddah Airport", "Madinah Munawwarah"],
-  ["Jeddah Airport", "King Abdullah Economic City (KAEC)"],
-  ["Makkah Mukarramah", "Madinah Munawwarah"],
-  ["Madinah Munawwarah", "Makkah Mukarramah"],
-  ["Madinah Airport", "Madinah Hotel"],
-  ["Madinah Munawwarah", "Jeddah Airport"],
-  ["Makkah Mukarramah", "Jeddah Airport"],
-];
+  { origin: "Jeddah Airport", destination: "Makkah Mukarramah", menuLabel: "Jeddah Airport to Makkah" },
+  { origin: "Jeddah Airport", destination: "Madinah Munawwarah", menuLabel: "Jeddah Airport to Madinah" },
+  { origin: "Jeddah Airport", destination: "King Abdullah Economic City (KAEC)", menuLabel: "Jeddah Airport to KAEC" },
+  { origin: "Makkah Mukarramah", destination: "Madinah Munawwarah", menuLabel: "Makkah to Madinah" },
+  { origin: "Madinah Munawwarah", destination: "Makkah Mukarramah", menuLabel: "Madinah to Makkah" },
+  { origin: "Madinah Airport", destination: "Madinah Hotel", menuLabel: "Madinah Airport to Madinah Hotel" },
+  { origin: "Madinah Munawwarah", destination: "Jeddah Airport", menuLabel: "Madinah to Jeddah Airport" },
+  { origin: "Makkah Mukarramah", destination: "Jeddah Airport", menuLabel: "Makkah to Jeddah Airport" },
+] as const;
+
+export const routeSlug = (origin: string, destination: string) =>
+  `${origin}-to-${destination}`.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
