@@ -1,0 +1,8 @@
+import Link from "next/link";
+import { EnquiryForm } from "./EnquiryForm";
+import { Shell, PageHero } from "./SiteShell";
+
+type Props = { eyebrow: string; title: string; intro: string; included: string[]; pickup: string; dropoff: string; considerations: string[]; faqs: Array<[string, string]> };
+export function ServiceDetail({ eyebrow, title, intro, included, pickup, dropoff, considerations, faqs }: Props) {
+  return <Shell><PageHero eyebrow={eyebrow} title={title}><p>{intro}</p></PageHero><section className="detail-section service-detail"><div className="content-block"><p className="eyebrow">Service information</p><h2>What this enquiry covers</h2><ul>{included.map(item => <li key={item}>{item}</li>)}</ul></div><div className="content-block"><p className="eyebrow">Pickup & drop-off</p><h2>Clear coordination before travel</h2><p><b>Pickup:</b> {pickup}</p><p><b>Drop-off:</b> {dropoff}</p></div><div className="content-block"><p className="eyebrow">Journey considerations</p><h2>What we check with you</h2><ul>{considerations.map(item => <li key={item}>{item}</li>)}</ul><Link className="button button-dark" href="/fleet">Review vehicle options →</Link></div><div className="content-block"><p className="eyebrow">Practical FAQs</p><h2>Helpful answers</h2>{faqs.map(([question, answer]) => <details key={question}><summary>{question}</summary><p>{answer}</p></details>)}</div></section><section className="quote-band detail-quote"><div className="section-intro"><p className="eyebrow">Request a quotation</p><h2>Share your journey details.</h2><p>We’ll confirm availability and arrangements before making any booking confirmation.</p></div><EnquiryForm /></section></Shell>;
+}

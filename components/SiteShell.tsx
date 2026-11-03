@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 export function Header() {
-  return <header className="nav-shell"><Link className="brand" href="/"><span className="brand-mark">B</span><span>BARAKAH <em>AL MADINAH</em></span></Link><nav><Link href="/services">Services</Link><Link href="/routes">Routes</Link><Link href="/fleet">Fleet</Link><Link href="/packages">Packages</Link><Link href="/about">About</Link><Link href="/contact">Contact</Link></nav><Link className="button button-dark nav-cta" href="/contact#enquiry">Book your ride <span>↗</span></Link></header>;
+  return <><header className="nav-shell"><Link className="brand" href="/"><span className="brand-mark">B</span><span>BARAKAH <em>AL MADINAH</em></span></Link><nav><Link href="/services">Services</Link><Link href="/routes">Routes</Link><Link href="/fleet">Fleet</Link><Link href="/packages">Packages</Link><Link href="/about">About</Link><Link href="/contact">Contact</Link></nav><Link className="button button-dark nav-cta" href="/contact#enquiry">Book your ride <span>↗</span></Link></header><nav className="mobile-nav" aria-label="Mobile navigation"><Link href="/services">Services</Link><Link href="/routes">Routes</Link><Link href="/fleet">Fleet</Link><Link href="/packages">Packages</Link><Link href="/about">About</Link><Link href="/contact">Contact</Link></nav></>;
 }
 
 export function Footer() {
