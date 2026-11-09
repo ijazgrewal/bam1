@@ -1,0 +1,6 @@
+import type { MetadataRoute } from "next";
+import { siteUrl } from "../lib/site-url";
+import { fleetDetails } from "../components/PremiumFleetPage";
+import { routes, routeSlug } from "../lib/site-data";
+const pages = ["/","/services","/routes","/fleet","/family-umrah-transport-packages","/elderly-friendly-umrah-transport","/vip-umrah-family-transport","/custom-journey-planning","/airport-transfers","/intercity-transfers","/ziyarat-transport","/family-group-transportation","/our-fleet","/why-bam","/about-us","/plan-your-journey","/contact","/faqs","/travel-partners","/jeddah-airport-to-makkah-transfer","/makkah-to-madinah-private-transfer","/madinah-to-makkah-private-transfer","/madinah-airport-transfers","/jeddah-airport-to-madinah-transfer","/makkah-ziyarat-transport","/madinah-ziyarat-transport","/taif-ziyarat","/badr-ziyarat","/taif-private-transport",...fleetDetails.map(item=>`/fleet/${item.slug}`),...routes.map(item=>`/routes/${routeSlug(item.origin,item.destination)}`)];
+export default function sitemap(): MetadataRoute.Sitemap { return pages.map(path => ({ url: `${siteUrl}${path}`, lastModified: new Date(), changeFrequency: "monthly", priority: path === "/" ? 1 : 0.7 })); }

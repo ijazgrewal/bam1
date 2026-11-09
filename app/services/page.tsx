@@ -1,2 +1,5 @@
-import Link from "next/link"; import { Shell, PageHero } from "../../components/SiteShell"; import { services } from "../../lib/site-data";
-export default function Services() { return <Shell><PageHero eyebrow="Services" title="A service for every stage of the journey."><p>Choose airport transfer, intercity travel, Ziyarat or a transport package. We confirm scope, vehicle suitability and arrangements before booking.</p></PageHero><section className="detail-section card-list">{services.map(s=><article className="detail-card" key={s.title}><p className="eyebrow">Private transport</p><h2>{s.title}</h2><p>{s.description}</p><Link className="button button-dark" href={s.href}>Explore service →</Link></article>)}</section></Shell> }
+import type { Metadata } from "next";
+import { PremiumContentPage } from "../../components/PremiumContentPage";
+import { premiumPages } from "../../lib/premium-pages";
+export const metadata: Metadata = { title: "Private Umrah Transport Services Saudi Arabia | BAM", description: premiumPages.services.intro, alternates: { canonical: "/services" } };
+export default function Services() { return <PremiumContentPage data={premiumPages.services} />; }

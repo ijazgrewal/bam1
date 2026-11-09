@@ -1,4 +1,4 @@
-import { EnquiryForm } from "../../components/EnquiryForm";
-import { Shell, PageHero } from "../../components/SiteShell";
-
-export default function Contact() { return <Shell><PageHero eyebrow="Contact & quotation" title="Tell us about the journey you need."><p>Use the quote form to share the practical details. A booking coordinator can then review the journey and respond with the correct vehicle and quotation.</p></PageHero><section className="detail-section contact-layout"><div><p className="eyebrow">Before you send</p><h2>Helpful information</h2><ul><li>Pickup and destination, including hotel or airport where relevant</li><li>Local date and pickup time</li><li>Passenger and luggage count</li><li>Flight number for an airport journey, if available</li><li>Optional vehicle preference and any additional stops</li></ul><p className="contact-disclosure">Verified WhatsApp, click-to-call number, email and service hours must be added by the business before launch. The site does not invent contact details.</p></div><div id="enquiry"><p className="eyebrow">Quote form</p><h2>Request a quotation</h2><EnquiryForm /></div></section></Shell> }
+import type { Metadata } from "next";
+import { PremiumContactPage } from "../../components/PremiumContactPage";
+export const metadata:Metadata={title:"Contact BAM Transport | Private Umrah Transport",description:"Contact BAM Transport by WhatsApp or enquiry form for private airport, intercity, Ziyarat and family transport in Saudi Arabia.",alternates:{canonical:"/contact"}};
+export default function Contact(){return <PremiumContactPage/>;}

@@ -1,4 +1,6 @@
-# vinext-starter
+# BAM Transport website
+
+This is a Next App Router-style site running through Vinext for local development. See [DEPLOYMENT.md](./DEPLOYMENT.md) for local and Vercel deployment instructions.
 
 A clean full-stack starter running on [vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and Drizzle support.
 
