@@ -13,7 +13,6 @@
 # Generated builds and framework state
 /dist/
 /.next/
-/.vinext/
 /out/
 next-env.d.ts
 *.tsbuildinfo
@@ -29,18 +28,15 @@ yarn-error.log*
 
 # Local environment and keys
 .env*
-.dev.vars*
+!.env.example
 *.pem
 
-# Checkout-local tool state
+# Legacy local-preview state, retained only to avoid tracking existing local files.
 /.wrangler/
-/.sites-runtime/
+
+# Checkout-local tool state
 
 # Workspace scaffolding and publication archives
-/.agents/
-/.codex/
-/outputs/
-/work/
 
 # OS metadata
 .DS_Store

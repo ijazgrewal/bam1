@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./bam-hero.css";
 import "./bam-pages.css";
 import "./premium-pages.css";
 import "./fleet-pages.css";
