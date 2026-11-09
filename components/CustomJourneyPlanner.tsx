@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useMemo, useState } from "react";
+import { submitLead } from "@/lib/lead-submit";
 
 type Stop = { pickup: string; dropoff: string; date: string; ziyarat: string; notes: string };
 type PlannerData = {
@@ -50,10 +51,9 @@ export function CustomJourneyPlanner() {
     const message = validate(4); if (message) { setError(message); return; }
     setStatus("loading"); setError("");
     const stopSummary = stops.map((item, index) => `Transfer ${index + 1}: ${item.pickup} to ${item.dropoff} on ${item.date}${item.ziyarat ? `; Ziyarat: ${item.ziyarat}` : ""}${item.notes ? `; Notes: ${item.notes}` : ""}`).join("\n");
-    const payload = { tripType: data.journeyType, pickup: data.arrivalLocation, destination: data.destinations, passengers: data.passengers, luggage: data.luggage, vehicle: data.vehicle, name: data.fullName.trim(), phone: data.whatsapp.trim(), email: data.email.trim(), travelDate: data.arrivalDate, departureDate: data.departureDate, notes: `${stopSummary}\nAdditional notes: ${data.notes}`.slice(0, 2000), consent: "true" };
+    const payload = { tripType: data.journeyType, pickup: data.arrivalLocation, destination: data.destinations, passengers: data.passengers, luggage: data.luggage, vehicle: data.vehicle, name: data.fullName.trim(), phone: data.whatsapp.trim(), email: data.email.trim(), travelDate: data.arrivalDate, departureDate: data.departureDate, notes: `${stopSummary}\nAdditional notes: ${data.notes}`.slice(0, 2000), source: "journey-planner" as const, consent: true };
     try {
-      const response = await fetch("/api/enquiries", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
-      if (!response.ok) { const result = await response.json().catch(() => null); throw new Error(result?.error || "Request could not be submitted."); }
+      await submitLead(payload);
       setStatus("sent");
     } catch (submissionError) { setStatus("error"); setError(submissionError instanceof Error ? submissionError.message : "Request could not be submitted."); }
   }

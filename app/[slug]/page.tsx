@@ -45,6 +45,11 @@ const pageData: Record<string, BamPageData> = {
   "booking-and-cancellation-policy": { eyebrow: "Booking and cancellations", title: "Booking and cancellation rules require business approval.", intro: "Requests are not automatically confirmed; final booking and cancellation terms must be published only after approval.", highlights: ["Human confirmation", "Clear changes process", "Approved terms"], sections: [{ title: "Booking requests", text: "A journey request is reviewed before BAM issues any confirmed arrangement." }, { title: "Before launch", text: "Add approved cancellation, amendment, refund and waiting-time rules before accepting live bookings." }] },
 };
 
+export const dynamicParams = false;
+export function generateStaticParams() {
+  return [...new Set([...Object.keys(pageData), ...Object.keys(premiumPages), ...Object.keys(premiumRoutes)])].map((slug) => ({ slug }));
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params; const data = pageData[slug];
   if (slug === "family-umrah-transport-packages") return { title: "Family Umrah Transport Packages Saudi Arabia | BAM", description: "Plan private family Umrah transportation across Saudi Arabia with BAM. Explore airport transfers, intercity journeys and personalized transport coordination.", alternates: { canonical: "/family-umrah-transport-packages" }, openGraph: { title: "Family Umrah Transport Packages Saudi Arabia | BAM", description: "Plan private family Umrah transportation across Saudi Arabia with BAM." } };
