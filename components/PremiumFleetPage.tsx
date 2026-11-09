@@ -4,6 +4,7 @@ import { CarFront, Check, Luggage, Users } from "lucide-react";
 import { BamNavigation } from "./BamNavigation";
 import { BamFooter } from "./BamFooter";
 import { approvedFleet, type FleetVehicle } from "@/lib/fleet-data";
+import { CardButton } from "./ui/CardButton";
 
 export type { FleetVehicle } from "@/lib/fleet-data";
 
@@ -11,7 +12,7 @@ export function PremiumFleetPage() {
   return <main className="fleet-premium"><BamNavigation />
     <section className="fleet-premium-hero"><p>Approved BAM vehicles</p><h1>Private Vehicles Selected Around Your Journey</h1><span>Explore BAM&apos;s approved vehicle imagery. Final vehicle, passenger suitability, luggage space and availability are confirmed after your actual request is reviewed.</span><Link className="gold-button" href="/contact">Request a Vehicle Match →</Link></section>
     <section className="fleet-intro"><div><p>Match the journey</p><h2>Space, Route and Family Needs Considered Together</h2></div><p>BAM does not rely on generic seating claims. Share your passengers, luggage, route and practical needs so the team can confirm a suitable available vehicle.</p></section>
-    <section className="fleet-grid">{approvedFleet.map(vehicle => <article key={vehicle.slug}><div><Image src={vehicle.image} alt={`${vehicle.name} approved for BAM private Umrah transport`} fill sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 33vw" /></div><section><p>Private transport vehicle</p><h2>{vehicle.name}</h2><span>{vehicle.use}</span><ul><li><Users />Passenger suitability reviewed</li><li><Luggage />Luggage requirements confirmed</li></ul><Link href={`/fleet/${vehicle.slug}`}>View Vehicle <b>→</b></Link></section></article>)}</section>
+    <section className="fleet-grid">{approvedFleet.map(vehicle => <article className="flex h-full flex-col" key={vehicle.slug}><div><Image src={vehicle.image} alt={`${vehicle.name} approved for BAM private Umrah transport`} fill sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 33vw" /></div><section className="flex flex-1 flex-col"><p>Private transport vehicle</p><h2>{vehicle.name}</h2><span>{vehicle.use}</span><ul><li><Users />Passenger suitability reviewed</li><li><Luggage />Luggage requirements confirmed</li></ul><CardButton className="mt-auto" href={`/fleet/${vehicle.slug}`}>View Vehicle <span aria-hidden="true">→</span></CardButton></section></article>)}</section>
     <section className="fleet-selection"><div><CarFront /><p>Vehicle selection</p><h2>What BAM Reviews Before Confirmation</h2></div><ul>{["Passenger count and family composition","Number and size of luggage items","Airport, city or intercity route","Child, elderly or mobility considerations","Requested stops and journey duration","Current operational availability"].map(item=><li key={item}><Check />{item}</li>)}</ul></section>
     <section className="premium-info-final"><p>Plan with confidence</p><h2>Let BAM Review the Right Vehicle for Your Family</h2><span>Share real journey details for a practical vehicle recommendation and quotation.</span><Link className="gold-button" href="/contact">Request Transport →</Link></section><BamFooter />
   </main>;

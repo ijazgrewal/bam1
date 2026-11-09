@@ -7,7 +7,7 @@ type Stop = { pickup: string; dropoff: string; date: string; ziyarat: string; no
 type PlannerData = {
   journeyType: string; arrivalDate: string; departureDate: string; arrivalLocation: string;
   destinations: string; passengers: string; luggage: string; vehicle: string;
-  fullName: string; whatsapp: string; email: string; notes: string; consent: boolean;
+  fullName: string; whatsapp: string; email: string; notes: string; website: string; consent: boolean;
 };
 
 const emptyStop = (): Stop => ({ pickup: "", dropoff: "", date: "", ziyarat: "", notes: "" });
@@ -17,7 +17,7 @@ const locations = ["Jeddah Airport", "Makkah Mukarramah", "Madinah Munawwarah", 
 export function CustomJourneyPlanner() {
   const [step, setStep] = useState(0);
   const [stops, setStops] = useState<Stop[]>([emptyStop()]);
-  const [data, setData] = useState<PlannerData>({ journeyType: "", arrivalDate: "", departureDate: "", arrivalLocation: "", destinations: "", passengers: "", luggage: "", vehicle: "", fullName: "", whatsapp: "", email: "", notes: "", consent: false });
+  const [data, setData] = useState<PlannerData>({ journeyType: "", arrivalDate: "", departureDate: "", arrivalLocation: "", destinations: "", passengers: "", luggage: "", vehicle: "", fullName: "", whatsapp: "", email: "", notes: "", website: "", consent: false });
   const [error, setError] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "sent" | "error">("idle");
   const today = useMemo(() => new Date().toISOString().slice(0, 10), []);
@@ -51,7 +51,7 @@ export function CustomJourneyPlanner() {
     const message = validate(4); if (message) { setError(message); return; }
     setStatus("loading"); setError("");
     const stopSummary = stops.map((item, index) => `Transfer ${index + 1}: ${item.pickup} to ${item.dropoff} on ${item.date}${item.ziyarat ? `; Ziyarat: ${item.ziyarat}` : ""}${item.notes ? `; Notes: ${item.notes}` : ""}`).join("\n");
-    const payload = { tripType: data.journeyType, pickup: data.arrivalLocation, destination: data.destinations, passengers: data.passengers, luggage: data.luggage, vehicle: data.vehicle, name: data.fullName.trim(), phone: data.whatsapp.trim(), email: data.email.trim(), travelDate: data.arrivalDate, departureDate: data.departureDate, notes: `${stopSummary}\nAdditional notes: ${data.notes}`.slice(0, 2000), source: "journey-planner" as const, consent: true };
+    const payload = { tripType: data.journeyType, pickup: data.arrivalLocation, destination: data.destinations, passengers: data.passengers, luggage: data.luggage, vehicle: data.vehicle, name: data.fullName.trim(), phone: data.whatsapp.trim(), email: data.email.trim(), travelDate: data.arrivalDate, departureDate: data.departureDate, notes: `${stopSummary}\nAdditional notes: ${data.notes}`.slice(0, 2000), source: "journey-planner" as const, consent: true, website: data.website };
     try {
       await submitLead(payload);
       setStatus("sent");
@@ -67,6 +67,7 @@ export function CustomJourneyPlanner() {
       {step === 3 && <fieldset><legend>Select a vehicle preference</legend><p className="journey-helper">Final availability and suitability are confirmed after BAM reviews passengers, luggage and routes.</p><div className="journey-choice-grid">{["GMC Yukon XL", "Hyundai Staria", "Toyota Hiace", "Let BAM Recommend"].map((option) => <label key={option}><input type="radio" name="vehicle" checked={data.vehicle === option} onChange={() => update("vehicle", option)} /><span>{option}</span></label>)}</div></fieldset>}
       {step === 4 && <fieldset className="journey-review"><legend>Contact details and itinerary review</legend><div className="journey-fields"><label>Full name *<input autoComplete="name" value={data.fullName} onChange={(event) => update("fullName", event.target.value)} placeholder="Your full name" /></label><label>WhatsApp number *<input type="tel" inputMode="tel" autoComplete="tel" value={data.whatsapp} onChange={(event) => update("whatsapp", event.target.value)} placeholder="+966 5X XXX XXXX" /></label><label>Email address <em>(optional)</em><input type="email" autoComplete="email" value={data.email} onChange={(event) => update("email", event.target.value)} placeholder="name@example.com" /></label><label className="full">Additional travel notes <em>(optional)</em><textarea rows={4} value={data.notes} onChange={(event) => update("notes", event.target.value)} placeholder="Share practical timing, luggage or family considerations. Do not include passport or payment-card details." /></label></div><section className="itinerary-summary"><h3>Your itinerary summary</h3><dl><div><dt>Journey</dt><dd>{data.journeyType}</dd></div><div><dt>Arrival</dt><dd>{data.arrivalDate} — {data.arrivalLocation}</dd></div><div><dt>Destinations</dt><dd>{data.destinations}</dd></div><div><dt>Passengers</dt><dd>{data.passengers}</dd></div><div><dt>Vehicle</dt><dd>{data.vehicle}</dd></div><div><dt>Transfers</dt><dd>{stops.length}</dd></div></dl>{stops.map((item, index) => <p key={index}><b>{index + 1}.</b> {item.pickup} → {item.dropoff} on {item.date}{item.ziyarat ? ` · ${item.ziyarat}` : ""}</p>)}</section><label className="journey-consent"><input type="checkbox" checked={data.consent} onChange={(event) => update("consent", event.target.checked)} /> I agree to submit these details for BAM&apos;s manual review. This is not an instant booking confirmation.</label></fieldset>}
       <datalist id="bam-locations">{locations.map((location) => <option key={location} value={location} />)}</datalist>
+      <input className="sr-only" name="website" value={data.website} onChange={(event) => update("website", event.target.value)} tabIndex={-1} autoComplete="off" aria-hidden="true" />
       {error && <p className="journey-error" role="alert">{error}</p>}
       {status === "sent" && <p className="journey-success" role="status">Your itinerary request was received for review. This is not a confirmed booking; BAM must review availability, scheduling and quotation details.</p>}
       <div className="journey-actions">{step > 0 && status !== "sent" && <button type="button" className="journey-back" onClick={back}>Back</button>}{step < 4 ? <button type="button" className="journey-next" onClick={next}>Continue <span>→</span></button> : status !== "sent" && <button type="submit" className="journey-next" disabled={status === "loading"}>{status === "loading" ? "Submitting…" : "Request My Transport Plan"}</button>}</div>

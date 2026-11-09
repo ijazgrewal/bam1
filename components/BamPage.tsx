@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { BamNavigation } from "./BamNavigation";
 import { BamFooter } from "./BamFooter";
+import { CardButton } from "./ui/CardButton";
 
 export type BamPageData = {
   eyebrow: string;
@@ -31,7 +32,7 @@ export function BamPage({ data }: { data: BamPageData }) {
         {isFleetPage && <div className="fleet-gallery" aria-label="Our vehicles">
           {fleetVehicles.map((vehicle) => <article key={vehicle.name}>
             <Image src={vehicle.image} alt={vehicle.name} width={1120} height={1400} />
-            <div><div className="vehicle-card-meta">{vehicle.details.map((detail) => <span key={detail}>✦ {detail}</span>)}</div><p>{vehicle.name}</p><span>{vehicle.description}</span><Link href="#enquiry">See details　→</Link></div>
+            <div><div className="vehicle-card-meta">{vehicle.details.map((detail) => <span key={detail}>✦ {detail}</span>)}</div><p>{vehicle.name}</p><span>{vehicle.description}</span><CardButton href="#enquiry">See details <span aria-hidden="true">→</span></CardButton></div>
           </article>)}
         </div>}
         <div className="section-heading"><p>Travel with confidence</p><h2>Thoughtfully arranged around your journey.</h2></div>
