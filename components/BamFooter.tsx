@@ -1,8 +1,34 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+const dropdownPaths = new Set([
+  "/family-umrah-transport-packages",
+  "/elderly-friendly-umrah-transport",
+  "/vip-umrah-family-transport",
+  "/custom-journey-planning",
+  "/airport-transfers",
+  "/intercity-transfers",
+  "/ziyarat-transport",
+  "/family-group-transportation",
+  "/jeddah-airport-to-makkah-transfer",
+  "/makkah-to-madinah-private-transfer",
+  "/madinah-to-makkah-private-transfer",
+  "/madinah-airport-transfers",
+  "/jeddah-airport-to-madinah-transfer",
+  "/taif-private-transport",
+  "/makkah-ziyarat-transport",
+  "/madinah-ziyarat-transport",
+  "/taif-ziyarat",
+]);
 
 export function BamFooter() {
+  const pathname = usePathname();
+  const showFooterCta = !dropdownPaths.has(pathname);
+
   return <footer className="bam-footer">
-    <section className="bam-footer-cta"><p>Plan with confidence</p><h2>Let Us Take Care of Your Journey.</h2><span>Your family deserves a carefully planned Umrah experience. Share your itinerary with BAM Transport and receive personalised transportation assistance.</span><Link href="/custom-journey-planning">Request Your Family Transport Plan</Link></section>
+    {showFooterCta && <section className="bam-footer-cta"><p>Plan with confidence</p><h2>Let Us Take Care of Your Journey.</h2><span>Your family deserves a carefully planned Umrah experience. Share your itinerary with BAM Transport and receive personalised transportation assistance.</span><Link href="/custom-journey-planning">Request Your Family Transport Plan</Link></section>}
     <section className="bam-footer-links">
       <section><b>BAM Transport</b><p>Private Umrah transport coordination for families, elderly pilgrims, groups and travel partners across Saudi Arabia.</p></section>
       <section><h3>Umrah Transport</h3><Link href="/family-umrah-transport-packages">Family packages</Link><Link href="/elderly-friendly-umrah-transport">Elder-friendly journeys</Link><Link href="/vip-umrah-family-transport">VIP family transport</Link><Link href="/custom-journey-planning">Custom journey planning</Link></section>

@@ -16,6 +16,7 @@ const vehicles = [
   ["GMC Yukon XL", "A premium private vehicle option reviewed around passenger, seating and luggage needs.", "/fleet-gmc-yukon-xl.png"],
   ["Hyundai Staria", "A flexible family vehicle option whose suitability is confirmed for each group.", "/fleet-hyundai-staria.png"],
   ["Toyota Hiace", "A spacious group option reviewed around journey length, boarding preferences and luggage.", "/fleet-toyota-hiace.png"],
+  ["Sprinter", "Spacious private transport reviewed for larger groups, luggage and connected journeys.", "/fleet-sprinter.png"],
 ] as const;
 
 const checklist = ["Arrival date and airport", "Main destinations", "Passenger count", "Luggage requirements", "Walking aids or mobility equipment", "Preferred travel schedule", "Rest-stop preferences", "Practical boarding considerations"];

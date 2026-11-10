@@ -1,0 +1,94 @@
+/* Shared fleet-card system: no orphaned cards, matching media and aligned CTAs. */
+.fleet-gallery,
+.family-fleet > div {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: stretch;
+}
+
+.fleet-gallery {
+  max-width: 1320px;
+  margin-inline: auto;
+}
+
+.family-fleet > div {
+  max-width: 1320px;
+  gap: 18px;
+}
+
+.elderly-vehicle-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 18px;
+}
+
+.fleet-gallery article,
+.family-fleet article,
+.elderly-vehicle-grid article {
+  display: flex;
+  min-width: 0;
+  height: 100%;
+  flex-direction: column;
+}
+
+.fleet-gallery img,
+.family-fleet img,
+.elderly-vehicle-grid img {
+  display: block;
+  width: 100%;
+  height: auto !important;
+  aspect-ratio: 16 / 10;
+  object-fit: cover !important;
+  object-position: center;
+}
+
+.fleet-gallery article > div,
+.family-fleet article > div,
+.elderly-vehicle-grid article > div {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.fleet-gallery p,
+.family-fleet h3,
+.elderly-vehicle-grid h3 {
+  min-height: 2.4em;
+}
+
+.fleet-gallery article > div > span,
+.family-fleet p,
+.elderly-vehicle-grid p {
+  min-height: 4.8em;
+}
+
+.fleet-gallery a,
+.family-fleet a,
+.elderly-vehicle-grid a {
+  align-self: stretch;
+  margin-top: auto;
+}
+
+@media (max-width: 900px) {
+  .fleet-gallery,
+  .family-fleet > div {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 820px;
+  }
+}
+
+@media (max-width: 650px) {
+  .fleet-gallery,
+  .family-fleet > div,
+  .elderly-vehicle-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fleet-gallery p,
+  .family-fleet h3,
+  .elderly-vehicle-grid h3,
+  .fleet-gallery article > div > span,
+  .family-fleet p,
+  .elderly-vehicle-grid p {
+    min-height: 0;
+  }
+}

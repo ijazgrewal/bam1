@@ -23,6 +23,7 @@ const fleet = [
   ["GMC Yukon XL", "Premium private comfort for family journeys.", "/fleet-gmc-yukon-xl.png"],
   ["Hyundai Staria", "Flexible space for a comfortable family journey.", "/fleet-hyundai-staria.png"],
   ["Toyota Hiace", "A spacious option for larger family groups.", "/fleet-toyota-hiace.png"],
+  ["Sprinter", "Spacious private transport for larger families and connected journeys.", "/fleet-sprinter.png"],
 ] as const;
 
 const faqs = [
@@ -30,7 +31,7 @@ const faqs = [
   ["Can we arrange airport and hotel transfers together?", "Yes. Share your arrival details and hotel information in one enquiry so BAM can review the connected transport requirements."],
   ["Can our family travel together in one vehicle?", "BAM reviews the passenger count, luggage and route to recommend a suitable available vehicle for your family."],
   ["Can we include Ziyarat transportation?", "Yes. Add your preferred Ziyarat locations and dates to the request. Access, timing and final routing are confirmed after review."],
-  ["Which vehicle is suitable for our family?", "The GMC Yukon XL, Hyundai Staria and Toyota Hiace are available fleet options. BAM confirms suitability around your actual group and luggage."],
+  ["Which vehicle is suitable for our family?", "The GMC Yukon XL, Hyundai Staria, Toyota Hiace and Sprinter are available fleet options. BAM confirms suitability around your actual group and luggage."],
   ["Can we change our itinerary after requesting a quotation?", "Tell BAM about any change as early as possible. Revised routing, timing and availability must be reviewed before arrangements are confirmed."],
 ] as const;
 

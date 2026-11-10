@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
@@ -14,6 +15,7 @@ const menus = [
 ];
 
 export function BamNavigation() {
+  const pathname = usePathname();
   const [openDesktopMenu, setOpenDesktopMenu] = useState<string | null>(null);
   const [openMobileMenu, setOpenMobileMenu] = useState<string | null>(null);
   const [mobile, setMobile] = useState(false);
@@ -72,6 +74,8 @@ export function BamNavigation() {
     setMobile(false);
   };
 
+  const isActivePath = (href: string) => pathname === href || (href !== "/" && pathname.startsWith(`${href}/`));
+
   return (
     <>
       <div className="stitch-topbar">
@@ -87,7 +91,7 @@ export function BamNavigation() {
           Menu <span>☰</span>
         </button>
         <nav aria-label="Primary navigation" className="desktop-menu">
-          <Link href="/" onClick={handleNavigation}>Home</Link>
+          <Link className={isActivePath("/") ? "active" : undefined} href="/" onClick={handleNavigation}>Home</Link>
           {menus.map((menu) => (
             <div
               className="nav-menu"
@@ -96,33 +100,33 @@ export function BamNavigation() {
               onMouseLeave={scheduleDesktopClose}
               onFocus={() => openDesktopDropdown(menu.label)}
             >
-              <button className="nav-menu-trigger" aria-expanded={openDesktopMenu === menu.label} onClick={() => setOpenDesktopMenu(openDesktopMenu === menu.label ? null : menu.label)}>
+              <button className={`nav-menu-trigger${menu.links.some(([, href]) => isActivePath(href)) ? " active" : ""}`} aria-expanded={openDesktopMenu === menu.label} onClick={() => setOpenDesktopMenu(openDesktopMenu === menu.label ? null : menu.label)}>
                 <span>{menu.label}</span><ChevronDown className="nav-chevron" aria-hidden="true" size={15} strokeWidth={2.25} />
               </button>
               {openDesktopMenu === menu.label && (
                 <div className="nav-popover">
-                  {menu.links.map(([label, href]) => <Link key={href} href={href} onClick={handleNavigation}>{label}</Link>)}
+                  {menu.links.map(([label, href]) => <Link className={isActivePath(href) ? "active" : undefined} key={href} href={href} onClick={handleNavigation}>{label}</Link>)}
                 </div>
               )}
             </div>
           ))}
-          <Link href="/our-fleet" onClick={handleNavigation}>Our Fleet</Link>
-          <Link href="/why-bam" onClick={handleNavigation}>Why BAM</Link>
-          <Link href="/contact" onClick={handleNavigation}>Contact</Link>
+          <Link className={isActivePath("/our-fleet") ? "active" : undefined} href="/our-fleet" onClick={handleNavigation}>Our Fleet</Link>
+          <Link className={isActivePath("/why-bam") ? "active" : undefined} href="/why-bam" onClick={handleNavigation}>Why BAM</Link>
+          <Link className={isActivePath("/contact") ? "active" : undefined} href="/contact" onClick={handleNavigation}>Contact</Link>
         </nav>
         <Link className="nav-button desktop-cta" href="/plan-your-journey" onClick={handleNavigation}>Plan Your Umrah Journey</Link>
       </header>
       <div ref={mobileMenuRef} id="bam-mobile-menu" className={`bam-mobile-menu ${mobile ? "open" : ""}`}>
         {menus.map((menu) => (
-          <details key={menu.label} open={openMobileMenu === menu.label} onToggle={(event) => setOpenMobileMenu(event.currentTarget.open ? menu.label : null)}>
+          <details className={menu.links.some(([, href]) => isActivePath(href)) ? "active" : undefined} key={menu.label} open={openMobileMenu === menu.label} onToggle={(event) => setOpenMobileMenu(event.currentTarget.open ? menu.label : null)}>
             <summary>{menu.label}</summary>
-            {menu.links.map(([label, href]) => <Link key={href} href={href} onClick={handleNavigation}>{label}</Link>)}
+            {menu.links.map(([label, href]) => <Link className={isActivePath(href) ? "active" : undefined} key={href} href={href} onClick={handleNavigation}>{label}</Link>)}
           </details>
         ))}
-        <Link href="/" onClick={handleNavigation}>Home</Link>
-        <Link href="/our-fleet" onClick={handleNavigation}>Our Fleet</Link>
-        <Link href="/why-bam" onClick={handleNavigation}>Why BAM</Link>
-        <Link href="/contact" onClick={handleNavigation}>Contact</Link>
+        <Link className={isActivePath("/") ? "active" : undefined} href="/" onClick={handleNavigation}>Home</Link>
+        <Link className={isActivePath("/our-fleet") ? "active" : undefined} href="/our-fleet" onClick={handleNavigation}>Our Fleet</Link>
+        <Link className={isActivePath("/why-bam") ? "active" : undefined} href="/why-bam" onClick={handleNavigation}>Why BAM</Link>
+        <Link className={isActivePath("/contact") ? "active" : undefined} href="/contact" onClick={handleNavigation}>Contact</Link>
         <Link className="nav-button" href="/plan-your-journey" onClick={handleNavigation}>Plan Your Umrah Journey</Link>
       </div>
       <a className="floating-whatsapp" href={`https://wa.me/${siteConfig.whatsappNumber}`} target="_blank" rel="noreferrer" aria-label={`Chat with ${siteConfig.name} on WhatsApp at ${siteConfig.phone}`}>
