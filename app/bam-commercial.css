@@ -46,3 +46,12 @@
 :is(.commercial-hero,.fleet-premium-hero,.contact-hero,.vehicle-hero) :is(.dark-button,.contact-outline,.vehicle-outline):hover{background:#fff!important;border-color:#fff!important;color:#00291d!important;transform:translateY(-2px);box-shadow:0 8px 16px #0000003d}
 :is(.commercial-hero,.fleet-premium-hero,.contact-hero,.vehicle-hero) :is(.gold-button,.dark-button,.contact-outline,.vehicle-outline):focus-visible{outline:2px solid #e5c378;outline-offset:3px}
 @media(prefers-reduced-motion:reduce){:is(.commercial-hero,.fleet-premium-hero,.contact-hero,.vehicle-hero) :is(.gold-button,.dark-button,.contact-outline,.vehicle-outline){transition:none}:is(.commercial-hero,.fleet-premium-hero,.contact-hero,.vehicle-hero) :is(.gold-button,.dark-button,.contact-outline,.vehicle-outline):hover{transform:none}}
+
+/* Preserve the desktop header while preventing its CTA rule from leaking into the mobile menu. */
+@media(max-width:900px){.stitch-nav .desktop-cta{display:none!important}}
+
+/* Keep every shared header and hero usable on the narrowest phone viewports. */
+@media(max-width:380px){.stitch-topbar{padding-inline:12px;font-size:8px}.stitch-nav{gap:8px;padding-inline:12px}.stitch-brand{gap:8px;max-width:calc(100% - 58px)}.brand-logo{width:34px;height:34px}.mobile-toggle{padding:9px 8px;font-size:10px}.commercial-home .commercial-hero h1{font-size:clamp(32px,12vw,38px);overflow-wrap:anywhere}.commercial-home .commercial-hero>div>span{overflow-wrap:anywhere}}
+
+/* The commercial stylesheet loads last, so retain the home hero image above its shared green fallback. */
+.commercial-home .commercial-hero{background-image:radial-gradient(circle at 7% 100%,rgba(21,92,76,.88),transparent 30%),radial-gradient(circle at 90% 10%,rgba(36,90,72,.7),transparent 24%),linear-gradient(90deg,rgba(0,41,29,.82) 0%,rgba(0,41,29,.58) 52%,rgba(0,41,29,.32) 100%),url("/bam-hero.png")}

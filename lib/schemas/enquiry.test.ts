@@ -46,4 +46,12 @@ describe("enquiry schema", () => {
   it("rejects honeypot submissions", () => {
     expect(schema.safeParse({ ...validEnquiry, website: "spam" }).success).toBe(false);
   });
+
+  it("accepts a valid partner enquiry", () => {
+    expect(schema.safeParse({ ...validEnquiry, source: "partner", agencyName: "Example Umrah Travel", partnershipType: "Travel agency", monthlyRequests: "1–5" }).success).toBe(true);
+  });
+
+  it("requires an agency name for partner enquiries", () => {
+    expect(schema.safeParse({ ...validEnquiry, source: "partner", agencyName: "" }).success).toBe(false);
+  });
 });

@@ -23,6 +23,7 @@ const nextConfig: NextConfig = {
       { source: "/group-transport", destination: "/family-group-transportation", permanent: true },
       { source: "/packages", destination: "/family-umrah-transport-packages", permanent: true },
       { source: "/ziyarat-tours", destination: "/ziyarat-transport", permanent: true },
+      { source: "/travel-partners", destination: "/partner-with-bam", permanent: true },
     ];
   },
 };

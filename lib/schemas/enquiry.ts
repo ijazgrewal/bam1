@@ -28,7 +28,7 @@ export function getRiyadhDate(now = new Date()) {
   return `${value("year")}-${value("month")}-${value("day")}`;
 }
 
-export const enquirySources = ["hero", "enquiry", "journey-planner"] as const;
+export const enquirySources = ["hero", "enquiry", "journey-planner", "partner"] as const;
 
 const enquiryFields = z.object({
   tripType: z.string().trim().min(1, "Please complete the required fields.").max(120),
@@ -45,6 +45,10 @@ const enquiryFields = z.object({
   luggage: optionalText(120),
   vehicle: optionalText(120),
   notes: optionalText(2000),
+  agencyName: optionalText(160),
+  partnershipType: optionalText(120),
+  monthlyRequests: optionalText(80),
+  businessRequirements: optionalText(2000),
   source: z.enum(enquirySources),
   consent: z.union([z.literal(true), z.literal("true"), z.literal("on"), z.literal("1")]).transform(() => true),
   website: z.string().max(0).optional(),
@@ -61,6 +65,9 @@ export function createEnquirySchema(now = new Date()) {
   }
   if (data.travelDate && data.departureDate && data.departureDate < data.travelDate) {
     context.addIssue({ code: z.ZodIssueCode.custom, path: ["departureDate"], message: "Departure date must be on or after the travel date." });
+  }
+  if (data.source === "partner" && !data.agencyName) {
+    context.addIssue({ code: z.ZodIssueCode.custom, path: ["agencyName"], message: "Enter your agency or organisation name." });
   }
   });
 }

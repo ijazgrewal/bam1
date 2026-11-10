@@ -112,6 +112,7 @@ export function BamNavigation() {
           ))}
           <Link className={isActivePath("/our-fleet") ? "active" : undefined} href="/our-fleet" onClick={handleNavigation}>Our Fleet</Link>
           <Link className={isActivePath("/why-bam") ? "active" : undefined} href="/why-bam" onClick={handleNavigation}>Why BAM</Link>
+          <Link className={isActivePath("/partner-with-bam") ? "active" : undefined} href="/partner-with-bam" onClick={handleNavigation}>Partner With BAM</Link>
           <Link className={isActivePath("/contact") ? "active" : undefined} href="/contact" onClick={handleNavigation}>Contact</Link>
         </nav>
         <Link className="nav-button desktop-cta" href="/contact#enquiry" onClick={handleNavigation}>Book Your Transport</Link>
@@ -126,6 +127,7 @@ export function BamNavigation() {
         <Link className={isActivePath("/") ? "active" : undefined} href="/" onClick={handleNavigation}>Home</Link>
         <Link className={isActivePath("/our-fleet") ? "active" : undefined} href="/our-fleet" onClick={handleNavigation}>Our Fleet</Link>
         <Link className={isActivePath("/why-bam") ? "active" : undefined} href="/why-bam" onClick={handleNavigation}>Why BAM</Link>
+        <Link className={isActivePath("/partner-with-bam") ? "active" : undefined} href="/partner-with-bam" onClick={handleNavigation}>Partner With BAM</Link>
         <Link className={isActivePath("/contact") ? "active" : undefined} href="/contact" onClick={handleNavigation}>Contact</Link>
         <Link className="nav-button" href="/contact#enquiry" onClick={handleNavigation}>Book Your Transport</Link>
       </div>
