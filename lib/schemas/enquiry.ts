@@ -15,9 +15,22 @@ const optionalDate = z.string().trim().max(10).refine(
   "Enter a valid date in YYYY-MM-DD format.",
 ).optional().or(z.literal(""));
 
+const riyadhDateFormatter = new Intl.DateTimeFormat("en-US", {
+  timeZone: "Asia/Riyadh",
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+});
+
+export function getRiyadhDate(now = new Date()) {
+  const parts = riyadhDateFormatter.formatToParts(now);
+  const value = (type: "year" | "month" | "day") => parts.find((part) => part.type === type)?.value;
+  return `${value("year")}-${value("month")}-${value("day")}`;
+}
+
 export const enquirySources = ["hero", "enquiry", "journey-planner"] as const;
 
-export const enquirySchema = z.object({
+const enquiryFields = z.object({
   tripType: z.string().trim().min(1, "Please complete the required fields.").max(120),
   pickup: z.string().trim().min(1, "Please complete the required fields.").max(200),
   destination: z.string().trim().min(1, "Please complete the required fields.").max(200),
@@ -35,8 +48,12 @@ export const enquirySchema = z.object({
   source: z.enum(enquirySources),
   consent: z.union([z.literal(true), z.literal("true"), z.literal("on"), z.literal("1")]).transform(() => true),
   website: z.string().max(0).optional(),
-}).superRefine((data, context) => {
-  const today = new Date().toISOString().slice(0, 10);
+});
+
+export function createEnquirySchema(now = new Date()) {
+  const today = getRiyadhDate(now);
+
+  return enquiryFields.superRefine((data, context) => {
   for (const field of ["travelDate", "departureDate"] as const) {
     if (data[field] && data[field] < today) {
       context.addIssue({ code: z.ZodIssueCode.custom, path: [field], message: "Travel dates cannot be in the past." });
@@ -45,6 +62,9 @@ export const enquirySchema = z.object({
   if (data.travelDate && data.departureDate && data.departureDate < data.travelDate) {
     context.addIssue({ code: z.ZodIssueCode.custom, path: ["departureDate"], message: "Departure date must be on or after the travel date." });
   }
-});
+  });
+}
+
+export const enquirySchema = createEnquirySchema();
 
 export type EnquiryInput = z.infer<typeof enquirySchema>;

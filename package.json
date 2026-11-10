@@ -9,6 +9,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "test": "vitest run",
     "lint": "eslint . --ignore-pattern .next",
     "typecheck": "tsc --noEmit"
   },
@@ -30,7 +31,8 @@
     "eslint": "9.39.4",
     "eslint-config-next": "^16.4.5",
     "tailwindcss": "4.2.1",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "vitest": "^4.1.12"
   },
   "type": "module"
 }
