@@ -1,8 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CalendarRange, CarFront, Crown, MapPinned, MessageCircle, Route, ShieldCheck, Users } from "lucide-react";
-import { BamNavigation } from "./BamNavigation";
-import { BamFooter } from "./BamFooter";
 
 const features = [
   ["Private Premium Vehicles", "Explore suitable premium vehicles available for your confirmed itinerary and family requirements.", Crown],
@@ -42,7 +40,6 @@ export function VipTransportPage() {
   return <main className="stitch-page vip-page">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-    <BamNavigation />
     <section className="vip-hero"><div className="vip-hero-copy"><p>VIP family Umrah transport</p><h1>VIP Family Umrah Transport in Saudi Arabia</h1><span>Experience private Umrah transportation with a focus on comfort, privacy and personalized coordination. BAM helps families arrange premium vehicles and carefully planned transfers across Saudi Arabia according to their travel needs.</span><div><Link className="vip-gold-button" href="/contact">Request VIP Transport <b>→</b></Link><Link className="vip-outline-button" href="/our-fleet">Explore Premium Vehicles <b>→</b></Link></div></div><div className="vip-hero-image"><Image src="/fleet-gmc-yukon-xl.png" alt="Approved BAM GMC Yukon XL for VIP family Umrah transport" fill priority sizes="(max-width: 900px) 100vw, 48vw" /><span>Approved BAM premium fleet</span></div></section>
     <section className="vip-overview"><div><p>Personalized private transportation</p><h2>A More Personalized Way to Travel for Umrah</h2></div><div><p>VIP family transport focuses on private vehicle arrangements, comfortable family journeys and premium vehicle selection planned around your actual itinerary.</p><p>BAM reviews personalized schedules, arrival information and journey requirements before providing clear pre-arrival communication and dedicated coordination. No unlimited stops, complimentary extras or unsupported luxury guarantees are implied.</p><nav aria-label="VIP related services"><Link href="/airport-transfers">Airport transfers</Link><Link href="/intercity-transfers">Private routes</Link><Link href="/custom-journey-planning">Custom journey planning</Link></nav></div></section>
     <section className="vip-section"><header><p>Practical premium value</p><h2>What Makes BAM VIP Family Transportation Different?</h2></header><div className="vip-feature-grid">{features.map(([title, text, Icon]) => <article key={title}><span><Icon aria-hidden="true" /></span><h3>{title}</h3><p>{text}</p></article>)}</div></section>
@@ -53,6 +50,5 @@ export function VipTransportPage() {
     <section className="vip-trust"><div><p>Credible coordination</p><h2>Why Families Choose BAM for VIP Umrah Transport</h2><span>Premium value comes from clear, practical arrangements—not unsupported extras or invented testimonials.</span></div><div>{trustPoints.map(([title, text]) => <article key={title}><ShieldCheck aria-hidden="true" /><h3>{title}</h3><p>{text}</p></article>)}</div></section>
     <section className="vip-section vip-faq"><header><p>Helpful answers</p><h2>VIP Family Transport FAQs</h2></header>{faqs.map(([question, answer]) => <details key={question}><summary>{question}</summary><p>{answer}</p></details>)}</section>
     <section className="vip-final"><p>VIP family Umrah transport</p><h2>Premium Comfort for a Journey That Matters</h2><span>Share your preferred dates, destinations and family requirements to explore a tailored VIP transport arrangement with BAM.</span><Link className="vip-gold-button" href="/contact">Plan Your VIP Umrah Journey <b>→</b></Link></section>
-    <BamFooter />
   </main>;
 }

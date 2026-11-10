@@ -11,6 +11,8 @@ import "./dropdown-fix.css";
 import "./bam-commercial.css";
 import { siteUrl } from "../lib/site-url";
 import { siteConfig } from "@/lib/site-config";
+import { BamNavigation } from "@/components/BamNavigation";
+import { BamFooter } from "@/components/BamFooter";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -32,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased" suppressHydrationWarning>{children}</body>
+      <body className="antialiased" suppressHydrationWarning><BamNavigation />{children}<BamFooter /></body>
     </html>
   );
 }

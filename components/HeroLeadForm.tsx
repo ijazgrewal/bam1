@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { FormEvent, useState } from "react";
 import { submitLead } from "@/lib/lead-submit";
 
@@ -25,7 +26,7 @@ export function HeroLeadForm() {
       travelDate: String(data.get("travelDate") ?? ""),
       vehicle: String(data.get("vehicle") ?? ""),
       source: "hero" as const,
-      consent: true,
+      consent: data.get("consent") === "on",
     };
 
     try {
@@ -53,7 +54,8 @@ export function HeroLeadForm() {
           <label><span>Vehicle preference</span><select name="vehicle" defaultValue=""><option value="" disabled>Select a vehicle</option><option>GMC Yukon XL</option><option>Hyundai Staria</option><option>Toyota Hiace</option><option>Sprinter</option><option>Recommend a suitable vehicle</option></select></label>
         </div>
         <input className="sr-only" tabIndex={-1} name="website" autoComplete="off" aria-hidden="true" />
-        <button type="submit">Request Your Quote</button>
+        <label className="mt-4 flex items-start gap-2 text-xs leading-5 text-[#d6e0da]"><input className="mt-1 size-3.5 shrink-0 accent-[#e5c378]" name="consent" type="checkbox" required /><span>I agree that BAM may review my enquiry and contact me about it. See the <Link className="font-bold text-[#e5c378] underline underline-offset-2" href="/privacy-policy">Privacy Policy</Link>.</span></label>
+        <button className="mt-5" type="submit">Request Your Quote</button>
         {status === "sent" && <p className="hero-form-success" role="status">Thank you. BAM will review your request and contact you.</p>}
         {status === "error" && <p className="hero-form-error" role="alert">We could not send your request. Please try again.</p>}
       </form>

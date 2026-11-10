@@ -1,8 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Accessibility, CalendarClock, Check, Luggage, MessageCircle } from "lucide-react";
-import { BamNavigation } from "./BamNavigation";
-import { BamFooter } from "./BamFooter";
 import { CardButton } from "./ui/CardButton";
 
 const considerations = [
@@ -36,7 +34,6 @@ export function ElderlyTransportPage() {
   return <main className="stitch-page elderly-page">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-    <BamNavigation />
     <section className="elderly-hero"><div className="elderly-hero-copy"><p>Elderly-friendly Umrah mobility</p><h1>Elderly-Friendly Umrah Transport in Saudi Arabia</h1><span>Travel with your elderly family members through thoughtfully planned private transportation. BAM reviews boarding preferences, luggage arrangements, suitable vehicle options and journey requirements to help families travel with greater comfort and confidence.</span><div><Link className="gold-button" href="/contact">Discuss Your Family&apos;s Travel Needs <b>→</b></Link><Link className="elderly-outline" href="/our-fleet">Explore Suitable Vehicles <b>→</b></Link></div><small>BAM provides private transportation planning, not medical transport or trained medical assistance.</small></div><div className="elderly-hero-image"><Image src="/fleet-hyundai-staria.png" alt="Approved BAM Hyundai Staria vehicle considered for elderly-friendly family Umrah transport" fill priority sizes="(max-width: 900px) 100vw, 45vw" /></div></section>
     <section className="elderly-section elderly-overview"><div><p>Thoughtful private transport</p><h2>Private Umrah Transportation Planned Around Elderly Pilgrims</h2></div><div><p>Comfortable transport starts with practical information. BAM reviews vehicle selection, boarding preferences, manageable journey schedules, family coordination, luggage arrangements and requested rest stops before confirming a plan.</p><p>Tell us what helps your elderly family members travel more comfortably. We review what can be arranged without assuming wheelchair accessibility, physical lifting assistance or specialist equipment.</p><nav aria-label="Related elderly transport services"><Link href="/family-umrah-transport-packages">Family packages</Link><Link href="/airport-transfers">Airport transfers</Link><Link href="/intercity-transfers">Private routes</Link></nav></div></section>
     <section className="elderly-section"><header><p>Practical comfort considerations</p><h2>What Makes an Umrah Journey More Comfortable for Elderly Family Members?</h2></header><div className="elderly-consideration-grid">{considerations.map(([title, text, Icon]) => <article key={title}><span><Icon aria-hidden="true" /></span><h3>{title}</h3><p>{text}</p></article>)}</div></section>
@@ -46,6 +43,5 @@ export function ElderlyTransportPage() {
     <section className="elderly-section elderly-pricing"><div><p>Quotation guidance</p><h2>How Much Does Elderly-Friendly Umrah Transport Cost?</h2><span>Cost depends on the requested route, group size, suitable vehicle, travel schedule and transport requirements. BAM does not invent elderly-care charges or promise unverified complimentary services.</span></div><Link className="gold-button" href="/contact">Request an Elderly-Friendly Transport Quote <b>→</b></Link></section>
     <section className="elderly-section elderly-faq"><header><p>Practical answers</p><h2>Elderly-Friendly Transport FAQs</h2></header>{faqs.map(([question, answer]) => <details key={question}><summary>{question}</summary><p>{answer}</p></details>)}</section>
     <section className="elderly-final"><p>Travel with greater confidence</p><h2>A More Considered Journey for Your Loved Ones</h2><span>Tell BAM about your family&apos;s transportation needs so we can review suitable vehicle options and travel arrangements.</span><Link className="gold-button" href="/contact">Discuss Elderly-Friendly Transport <b>→</b></Link></section>
-    <BamFooter />
   </main>;
 }

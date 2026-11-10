@@ -1,7 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BamNavigation } from "./BamNavigation";
-import { BamFooter } from "./BamFooter";
 import { CardButton } from "./ui/CardButton";
 
 export type BamPageData = {
@@ -24,7 +22,6 @@ export function BamPage({ data }: { data: BamPageData }) {
 
   return (
     <main className="stitch-page inner-bam-page">
-      <BamNavigation />
       <section className="inner-hero">
         <p>{data.eyebrow}</p><h1>{data.title}</h1><span>{data.intro}</span>
         <div><Link className="gold-button" href="/contact">Request an itinerary　→</Link><Link className="dark-button" href="/contact">Speak to dispatch</Link></div>
@@ -40,7 +37,6 @@ export function BamPage({ data }: { data: BamPageData }) {
         <div className="highlight-grid">{data.highlights.map((item, index) => <article key={item}><b>0{index + 1}</b><h3>{item}</h3><p>Our team reviews every detail with care before confirming arrangements.</p></article>)}</div>
         <div className="detail-grid">{data.sections.map((section) => <article key={section.title}><h2>{section.title}</h2><p>{section.text}</p></article>)}</div>
       </section>
-      <BamFooter />
     </main>
   );
 }

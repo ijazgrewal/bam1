@@ -51,7 +51,7 @@ export function CustomJourneyPlanner() {
     const message = validate(4); if (message) { setError(message); return; }
     setStatus("loading"); setError("");
     const stopSummary = stops.map((item, index) => `Transfer ${index + 1}: ${item.pickup} to ${item.dropoff} on ${item.date}${item.ziyarat ? `; Ziyarat: ${item.ziyarat}` : ""}${item.notes ? `; Notes: ${item.notes}` : ""}`).join("\n");
-    const payload = { tripType: data.journeyType, pickup: data.arrivalLocation, destination: data.destinations, passengers: data.passengers, luggage: data.luggage, vehicle: data.vehicle, name: data.fullName.trim(), phone: data.whatsapp.trim(), email: data.email.trim(), travelDate: data.arrivalDate, departureDate: data.departureDate, notes: `${stopSummary}\nAdditional notes: ${data.notes}`.slice(0, 2000), source: "journey-planner" as const, consent: true, website: data.website };
+    const payload = { tripType: data.journeyType, pickup: data.arrivalLocation, destination: data.destinations, passengers: data.passengers, luggage: data.luggage, vehicle: data.vehicle, name: data.fullName.trim(), phone: data.whatsapp.trim(), email: data.email.trim(), travelDate: data.arrivalDate, departureDate: data.departureDate, notes: `${stopSummary}\nAdditional notes: ${data.notes}`.slice(0, 2000), source: "journey-planner" as const, consent: data.consent, website: data.website };
     try {
       await submitLead(payload);
       setStatus("sent");
