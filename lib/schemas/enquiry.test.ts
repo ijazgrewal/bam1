@@ -54,6 +54,7 @@ describe("enquiry schema", () => {
     email: "amina@example.com",
     partnershipType: "Travel agency",
     monthlyRequests: "1–5",
+    primaryTransportNeeds: "Airport transfers",
     businessRequirements: "Group airport and intercity transport requirements.",
     source: "partner" as const,
     consent: true,
@@ -66,6 +67,10 @@ describe("enquiry schema", () => {
 
   it("requires an agency name for partner enquiries", () => {
     expect(schema.safeParse({ ...validPartnerEnquiry, agencyName: "" }).success).toBe(false);
+  });
+
+  it("requires an international WhatsApp number for partner enquiries", () => {
+    expect(schema.safeParse({ ...validPartnerEnquiry, phone: "050 713 5765" }).success).toBe(false);
   });
 
   it("accepts 2,000-character partner requirements and rejects missing consent", () => {
