@@ -47,11 +47,33 @@ describe("enquiry schema", () => {
     expect(schema.safeParse({ ...validEnquiry, website: "spam" }).success).toBe(false);
   });
 
-  it("accepts a valid partner enquiry", () => {
-    expect(schema.safeParse({ ...validEnquiry, source: "partner", agencyName: "Example Umrah Travel", partnershipType: "Travel agency", monthlyRequests: "1–5" }).success).toBe(true);
+  const validPartnerEnquiry = {
+    agencyName: "Example Umrah Travel",
+    name: "Amina Khan",
+    phone: "+966 50 713 5765",
+    email: "amina@example.com",
+    partnershipType: "Travel agency",
+    monthlyRequests: "1–5",
+    businessRequirements: "Group airport and intercity transport requirements.",
+    source: "partner" as const,
+    consent: true,
+    website: "",
+  };
+
+  it("accepts a valid partner enquiry without trip fields", () => {
+    expect(schema.safeParse(validPartnerEnquiry).success).toBe(true);
   });
 
   it("requires an agency name for partner enquiries", () => {
-    expect(schema.safeParse({ ...validEnquiry, source: "partner", agencyName: "" }).success).toBe(false);
+    expect(schema.safeParse({ ...validPartnerEnquiry, agencyName: "" }).success).toBe(false);
+  });
+
+  it("accepts 2,000-character partner requirements and rejects missing consent", () => {
+    expect(schema.safeParse({ ...validPartnerEnquiry, businessRequirements: "a".repeat(2000) }).success).toBe(true);
+    expect(schema.safeParse({ ...validPartnerEnquiry, consent: false }).success).toBe(false);
+  });
+
+  it("rejects a partner honeypot submission", () => {
+    expect(schema.safeParse({ ...validPartnerEnquiry, website: "spam" }).success).toBe(false);
   });
 });

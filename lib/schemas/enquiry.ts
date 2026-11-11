@@ -30,7 +30,7 @@ export function getRiyadhDate(now = new Date()) {
 
 export const enquirySources = ["hero", "enquiry", "journey-planner", "partner"] as const;
 
-const enquiryFields = z.object({
+const tripEnquiryFields = z.object({
   tripType: z.string().trim().min(1, "Please complete the required fields.").max(120),
   pickup: z.string().trim().min(1, "Please complete the required fields.").max(200),
   destination: z.string().trim().min(1, "Please complete the required fields.").max(200),
@@ -45,11 +45,20 @@ const enquiryFields = z.object({
   luggage: optionalText(120),
   vehicle: optionalText(120),
   notes: optionalText(2000),
-  agencyName: optionalText(160),
-  partnershipType: optionalText(120),
-  monthlyRequests: optionalText(80),
+  source: z.enum(["hero", "enquiry", "journey-planner"]),
+  consent: z.union([z.literal(true), z.literal("true"), z.literal("on"), z.literal("1")]).transform(() => true),
+  website: z.string().max(0).optional(),
+});
+
+export const partnerEnquirySchema = z.object({
+  agencyName: z.string().trim().min(1, "Enter your agency or organisation name.").max(160),
+  name: z.string().trim().min(1, "Please complete the required fields.").max(120),
+  phone: z.string().trim().regex(/^\+?[0-9][0-9 ()-]{6,29}$/, "Enter a valid phone number."),
+  email: z.string().trim().email("Enter a valid email address."),
+  partnershipType: z.string().trim().min(1, "Please complete the required fields.").max(120),
+  monthlyRequests: z.string().trim().min(1, "Please complete the required fields.").max(80),
   businessRequirements: optionalText(2000),
-  source: z.enum(enquirySources),
+  source: z.literal("partner"),
   consent: z.union([z.literal(true), z.literal("true"), z.literal("on"), z.literal("1")]).transform(() => true),
   website: z.string().max(0).optional(),
 });
@@ -57,7 +66,7 @@ const enquiryFields = z.object({
 export function createEnquirySchema(now = new Date()) {
   const today = getRiyadhDate(now);
 
-  return enquiryFields.superRefine((data, context) => {
+  const tripEnquirySchema = tripEnquiryFields.superRefine((data, context) => {
   for (const field of ["travelDate", "departureDate"] as const) {
     if (data[field] && data[field] < today) {
       context.addIssue({ code: z.ZodIssueCode.custom, path: [field], message: "Travel dates cannot be in the past." });
@@ -66,10 +75,9 @@ export function createEnquirySchema(now = new Date()) {
   if (data.travelDate && data.departureDate && data.departureDate < data.travelDate) {
     context.addIssue({ code: z.ZodIssueCode.custom, path: ["departureDate"], message: "Departure date must be on or after the travel date." });
   }
-  if (data.source === "partner" && !data.agencyName) {
-    context.addIssue({ code: z.ZodIssueCode.custom, path: ["agencyName"], message: "Enter your agency or organisation name." });
-  }
   });
+
+  return z.discriminatedUnion("source", [tripEnquirySchema, partnerEnquirySchema]);
 }
 
 export const enquirySchema = createEnquirySchema();

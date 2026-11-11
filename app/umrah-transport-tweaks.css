@@ -1,0 +1,190 @@
+/* Shared refinements for the four Umrah Transport submenu pages. */
+.family-benefit-grid a{margin-top:auto;color:#745b19;font-size:13px;font-weight:700}
+.family-card-grid article{position:relative;isolation:isolate;overflow:hidden;background:#003b2d;border-color:#1e5c4b}
+.family-card-grid article:before{position:absolute;z-index:1;inset:0;background:linear-gradient(180deg,#00291d38 0%,#00291df0 72%,#00291d 100%);content:""}
+.family-card-grid .family-card-image{z-index:0;object-fit:cover}
+.family-card-grid article>*:not(.family-card-image){position:relative;z-index:2}
+.family-card-grid svg{border-color:#e5c378;background:#003b2dcc;color:#e5c378}
+.family-card-grid h3{color:#fffdf8}
+.family-card-grid p{color:#e5ece7}
+.family-card-grid a{background:#e5c378;color:#00291d}
+.elderly-consideration-grid article{grid-template-rows:auto auto 1fr}
+.elderly-consideration-grid article>a{grid-column:2;margin-top:18px;color:#735914;font-size:13px;font-weight:700}
+.vip-feature-grid article{display:flex;flex-direction:column}
+.vip-feature-grid article>a{margin-top:auto;padding-top:18px;color:#715616;font-size:13px;font-weight:700}
+.vip-trust article>a{grid-column:2;margin-top:5px;color:#715616;font-size:12px;font-weight:700}
+.elderly-vehicle-section{grid-template-columns:1fr;gap:32px}
+.elderly-vehicle-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.elderly-vehicle-action{text-align:center}
+@media(max-width:900px){.elderly-vehicle-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.elderly-consideration-grid article>a{grid-column:1/-1}.elderly-vehicle-grid{grid-template-columns:1fr}}
+
+/* Family package booking and quotation sections. */
+.family-process{padding:clamp(52px,6vw,76px) max(24px,calc((100vw - 1160px)/2))}
+.family-process>header{max-width:760px;margin:0 auto 38px;text-align:center}
+.family-process>header h2{margin:10px 0 12px;font-size:clamp(31px,3.4vw,46px)}
+.family-process>header>span{display:block;color:#d7e3dd;font-size:16px;line-height:1.65}
+.family-process-timeline{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;max-width:1160px;margin:0 auto;padding:0;list-style:none}
+.family-process-timeline:before{position:absolute;top:25px;right:12.5%;left:12.5%;height:1px;background:#77998b;content:""}
+.family-process-timeline li{position:relative;z-index:1;border:0;padding:0;text-align:center}
+.family-step-marker{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:52px;margin-bottom:18px}
+.family-step-marker>span{display:grid;width:52px;height:52px;place-items:center;border:1px solid #e5c378;border-radius:50%;background:#003b2d;color:#e5c378;box-shadow:0 0 0 8px #003b2d}
+.family-step-marker svg{width:21px;height:21px}
+.family-step-marker b{color:#e5c378;font:700 12px Arial,sans-serif;letter-spacing:.08em}
+.family-process-timeline h3{margin:0 0 8px;color:#fffdf8;font:normal 22px/1.2 Georgia,serif}
+.family-process-timeline p{margin:0;color:#d6e0db;font-size:14px;line-height:1.62}
+.family-pricing{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(280px,1fr);max-width:1160px;align-items:center;gap:clamp(34px,6vw,78px);margin:0 auto;padding:clamp(58px,7vw,86px) max(24px,5vw);background:#f8f3e8}
+.family-pricing>div{max-width:none}
+.family-pricing-copy>span{display:block;max-width:700px;color:#53645d;font-size:17px;line-height:1.7}
+.family-pricing-copy ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px 18px;margin:26px 0 0;padding:0;list-style:none}
+.family-pricing-copy li{display:flex;align-items:center;gap:9px;color:#28473b;font-size:14px;font-weight:700}
+.family-pricing-copy li svg{width:18px;flex:none;color:#b78316}
+.family-pricing-card{padding:30px;border:1px solid #d7ba70;border-radius:16px;background:#003b2d;box-shadow:0 18px 38px #00291d1f}
+.family-pricing-card>p{margin:0;color:#e5c378;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase}
+.family-pricing-card h3{margin:13px 0 11px;color:#fffdf8;font:normal 28px/1.15 Georgia,serif}
+.family-pricing-card>span{display:block;margin-bottom:24px;color:#dce7e1;font-size:14px;line-height:1.65}
+.family-pricing-card .gold-button{display:flex;width:100%;min-height:50px;align-items:center;justify-content:center;text-align:center}
+@media(max-width:900px){.family-process-timeline{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}.family-process-timeline:before{display:none}.family-step-marker{border-top:1px solid #77998b;padding-top:14px}.family-pricing{grid-template-columns:1fr}.family-pricing-card{max-width:560px}}
+@media(max-width:650px){.family-process>header{margin-bottom:30px;text-align:left}.family-process-timeline{display:block;margin-left:4px;border-left:1px solid #77998b;padding-left:27px}.family-process-timeline li{display:grid;grid-template-columns:58px 1fr;gap:15px;margin-bottom:30px;text-align:left}.family-process-timeline li:last-child{margin-bottom:0}.family-step-marker{display:block;min-height:0;margin:0;padding:0;border:0}.family-step-marker>span{width:48px;height:48px;margin-left:-52px}.family-step-marker b{display:block;margin-top:9px;margin-left:-43px}.family-pricing{padding:50px 24px}.family-pricing-copy ul{grid-template-columns:1fr}.family-pricing-card{padding:25px}.family-pricing-card h3{font-size:26px}}
+
+/* Reference-led compact panels for booking and quotation. */
+.family-process{max-width:960px;margin:56px auto;padding:24px 20px 20px;border-radius:20px;background:#2d3233}
+.family-process>header{max-width:none;margin:0 10px 16px;text-align:left}
+.family-process>header h2{margin:9px 0 12px;color:#e5c378;font:700 clamp(24px,3vw,30px)/1.2 Arial,sans-serif;letter-spacing:0}
+.family-process>header>span{color:#f0efeb;font-size:16px}
+.family-process-timeline{grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;max-width:none}
+.family-process-timeline:before{display:none}
+.family-process-timeline li{display:grid;grid-template-columns:1fr;gap:0;min-height:135px;border-radius:15px;background:#393f40;padding:17px 16px;text-align:left}
+.family-step-marker{min-height:28px;margin:0 0 14px;padding:0;border:0}
+.family-step-marker>span{width:auto;height:auto;border:0;border-radius:0;background:transparent;box-shadow:none;color:#e5c378}
+.family-step-marker svg{width:21px;height:21px}
+.family-step-marker b{color:#e5c378;font-size:13px}
+.family-process-timeline h3{margin:0 0 8px;color:#f7f5ef;font:700 20px/1.25 Arial,sans-serif}
+.family-process-timeline p{color:#e0e0dc;font-size:14px;line-height:1.55}
+.family-pricing{display:block;max-width:960px;margin:56px auto;padding:24px 20px 20px;border-radius:20px;background:#ecdfba}
+.family-pricing-copy{max-width:none}
+.family-pricing h2{margin:10px 0 16px;color:#30383b;font:700 clamp(25px,3vw,30px)/1.22 Arial,sans-serif;letter-spacing:0}
+.family-pricing-copy>span{color:#59636a;font-size:17px;line-height:1.65}
+.family-pricing-copy ul{display:grid;grid-template-columns:1fr;gap:15px;margin:24px 0;padding:0}
+.family-pricing-copy li{color:#30383b;font-size:16px;font-weight:400}
+.family-pricing-copy li svg{color:#af7605}
+.family-pricing-card{max-width:none;margin:0;padding:18px 15px 15px;border:1px solid #d0aa59;border-radius:15px;background:#e9e9e8;box-shadow:none}
+.family-pricing-card h3{margin:0 0 10px;color:#30383b;font:700 19px/1.25 Arial,sans-serif}
+.family-pricing-card>span{margin-bottom:12px;color:#626a70;font-size:15px;line-height:1.55}
+.family-pricing-card .gold-button{min-height:64px;border:0;border-radius:14px;background:#e2b94e;color:#273034!important;font-size:16px}
+@media(max-width:650px){.family-process,.family-pricing{margin:36px 16px;padding:21px 14px 14px}.family-process>header{margin-inline:5px}.family-process-timeline{display:grid;margin:0;border:0;padding:0;grid-template-columns:1fr}.family-process-timeline li{display:grid;margin:0;padding:16px;grid-template-columns:1fr}.family-step-marker{display:flex;margin:0 0 12px}.family-step-marker>span{margin:0}.family-step-marker b{display:block;margin:0}.family-pricing-copy ul{grid-template-columns:1fr}.family-pricing h2{font-size:25px}.family-pricing-card{padding:16px 12px 12px}}
+
+/* Wider ivory-sage booking panel. */
+.family-process{max-width:1320px;background:#e6ecdf}
+.family-process>header h2{color:#003b2d}
+.family-process>header>span{color:#4e655b}
+.family-process-timeline{grid-template-columns:repeat(4,minmax(0,1fr))}
+.family-process-timeline li{background:#003b2d}
+.family-process-timeline h3{font-size:19px}
+.family-process-timeline p{color:#dce8e1}
+@media(max-width:1000px){.family-process-timeline{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.family-process-timeline{grid-template-columns:1fr}}
+
+/* White booking cards on the ivory-sage section. */
+.family-process-timeline li{background:#fffdf8;border:1px solid #d5dfd0;box-shadow:0 8px 18px #003b2d0d}
+.family-process-timeline h3{color:#003b2d}
+.family-process-timeline p{color:#50655a}
+
+/* Deep emerald four-step treatment. */
+.family-process{max-width:none;margin:0;padding:clamp(72px,8vw,112px) max(24px,calc((100vw - 1160px)/2));border-radius:0;background:radial-gradient(circle at 8% 8%,#1d735d 0,transparent 28%),radial-gradient(circle at 86% 84%,#17634f 0,transparent 25%),#003b2d}
+.family-process>header{max-width:760px;margin:0 0 50px;text-align:left}
+.family-process>header>p{color:#e5c378}
+.family-process>header h2{max-width:640px;color:#e5c378;font:normal clamp(42px,4.8vw,62px)/1.03 Georgia,serif;letter-spacing:-.035em}
+.family-process>header>span{color:#f1f4ef;font-size:18px;line-height:1.65}
+.family-process-timeline{grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;max-width:1160px;margin:0;padding:0}
+.family-process-timeline li{position:relative;display:block;min-height:194px;border:1px solid #377b69;border-radius:17px;background:#003f31;padding:30px 24px;text-align:left;box-shadow:none}
+.family-process-timeline li:not(:last-child):after{position:absolute;top:34px;left:100%;width:24px;height:1px;background:#b89744;content:""}
+.family-step-marker{display:block;min-height:52px;margin:0 0 21px}
+.family-step-marker>span{display:none}
+.family-step-marker b{display:grid;width:43px;height:43px;place-items:center;border:1px solid #e5c378;border-radius:50%;color:#e5c378;font:700 13px Arial,sans-serif;letter-spacing:.04em}
+.family-process-timeline h3{margin:0;color:#fffdf8;font:700 19px/1.55 Arial,sans-serif}
+.family-process-timeline p{display:none}
+@media(max-width:1000px){.family-process-timeline{grid-template-columns:repeat(2,minmax(0,1fr))}.family-process-timeline li:not(:last-child):after{display:none}}
+@media(max-width:650px){.family-process{padding:60px 24px}.family-process>header{margin-bottom:32px}.family-process>header h2{font-size:40px}.family-process-timeline{grid-template-columns:1fr}.family-process-timeline li{min-height:0;padding:24px}.family-step-marker{margin-bottom:14px}}
+
+/* Wider quotation panel and interactive CTA. */
+.family-pricing{max-width:1200px}
+.family-pricing-card .gold-button{transition:transform .2s ease,background-color .2s ease,color .2s ease,box-shadow .2s ease}
+.family-pricing-card .gold-button:hover{background:#003b2d;color:#fffdf8!important;box-shadow:0 10px 22px #003b2d2b;transform:translateY(-2px)}
+.family-pricing-card .gold-button:focus-visible{outline:3px solid #003b2d;outline-offset:3px}
+
+/* Compact vertical rhythm for the booking section. */
+.family-process{padding-top:clamp(52px,5vw,72px);padding-bottom:clamp(52px,5vw,72px)}
+.family-process>header{margin-bottom:32px}
+.family-process-timeline{gap:18px}
+.family-process-timeline li{min-height:164px;padding:24px 22px}
+.family-step-marker{min-height:43px;margin-bottom:15px}
+@media(max-width:650px){.family-process{padding-top:48px;padding-bottom:48px}.family-process>header{margin-bottom:26px}.family-process-timeline li{min-height:0;padding:22px}}
+
+/* Elderly-friendly quotation review panel. */
+.elderly-pricing{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(290px,1fr);max-width:1200px;gap:clamp(32px,6vw,72px);align-items:center;margin:56px auto;padding:clamp(42px,6vw,68px);border:1px solid #e1d3b5;border-radius:20px;background:#f8f3e8}
+.elderly-pricing>div{max-width:none}
+.elderly-pricing-copy>span{display:block;max-width:710px;color:#53645d;font-size:17px;line-height:1.7}
+.elderly-pricing-copy ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px 18px;margin:27px 0 0;padding:0;list-style:none}
+.elderly-pricing-copy li{display:flex;align-items:center;gap:9px;color:#29483c;font-size:14px;font-weight:700}
+.elderly-pricing-copy li svg{width:18px;flex:none;color:#a97913}
+.elderly-quote-card{padding:29px;border:1px solid #d5b76f;border-radius:16px;background:#003b2d;box-shadow:0 16px 34px #00291d18}
+.elderly-quote-card>p{margin:0;color:#e5c378;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.elderly-quote-card h3{margin:13px 0 11px;color:#fffdf8;font:normal 28px/1.15 Georgia,serif}
+.elderly-quote-card>span{display:block;margin-bottom:24px;color:#dfe9e4;font-size:14px;line-height:1.65}
+.elderly-quote-card .gold-button{display:flex;width:100%;min-height:52px;align-items:center;justify-content:center;text-align:center;transition:transform .2s ease,background-color .2s ease,color .2s ease}
+.elderly-quote-card .gold-button:hover{background:#fffdf8;color:#003b2d!important;transform:translateY(-2px)}
+.elderly-quote-card .gold-button:focus-visible{outline:3px solid #e5c378;outline-offset:3px}
+@media(max-width:900px){.elderly-pricing{grid-template-columns:1fr}.elderly-quote-card{max-width:580px}.elderly-pricing-copy ul{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){.elderly-pricing{margin:36px 16px;padding:35px 23px}.elderly-pricing-copy ul{grid-template-columns:1fr}.elderly-quote-card{padding:24px}.elderly-quote-card h3{font-size:26px}}
+
+/* VIP value cards with relevant BAM imagery and clear CTAs. */
+.vip-feature-grid article{isolation:isolate;overflow:hidden;background:#003b2d;border-color:#286553}
+.vip-feature-grid article:before{z-index:3;background:#e5c378}
+.vip-feature-grid article:after{position:absolute;z-index:1;inset:0;background:linear-gradient(180deg,#00291d35 0%,#00291de8 63%,#00291d 100%);content:""}
+.vip-feature-grid .vip-feature-image{z-index:0;object-fit:cover}
+.vip-feature-grid article>*:not(.vip-feature-image){position:relative;z-index:2}
+.vip-feature-grid article>span{border-color:#e5c378;background:#003b2dcc;color:#e5c378}
+.vip-feature-grid h3{color:#fffdf8}
+.vip-feature-grid p{color:#e4ece8}
+.vip-feature-grid .vip-feature-button{display:flex;min-height:42px;align-items:center;justify-content:center;margin-top:auto;border-radius:7px;background:#e5c378;color:#00291d;font-size:13px;font-weight:700;transition:transform .2s ease,background-color .2s ease,color .2s ease}
+.vip-feature-grid .vip-feature-button:hover{background:#fffdf8;color:#003b2d;transform:translateY(-2px)}
+.vip-feature-grid .vip-feature-button:focus-visible{outline:3px solid #e5c378;outline-offset:3px}
+.vip-feature-grid .vip-feature-button{position:relative;padding-inline:42px}
+.vip-feature-grid .vip-feature-button b{position:absolute;right:20px;font-size:16px;line-height:1}
+.vip-feature-grid .vip-feature-button{padding-inline:16px}
+.vip-feature-grid .vip-feature-button b{display:none}
+.vip-feature-grid .vip-feature-button{width:100%;align-self:center;justify-content:center;text-align:center}
+
+/* VIP signature vehicle CTA states. */
+.vip-fleet-copy .vip-outline-dark,.vip-fleet-copy .vip-gold-button{transition:transform .2s ease,background-color .2s ease,color .2s ease,border-color .2s ease,box-shadow .2s ease}
+.vip-fleet-copy .vip-outline-dark:hover{border-color:#003b2d;background:#003b2d;color:#fffdf8;box-shadow:0 8px 18px #003b2d22;transform:translateY(-2px)}
+.vip-fleet-copy .vip-gold-button:hover{border-color:#e5c378;background:#fffdf8;color:#003b2d!important;box-shadow:0 8px 18px #003b2d18;transform:translateY(-2px)}
+.vip-fleet-copy .vip-outline-dark:focus-visible,.vip-fleet-copy .vip-gold-button:focus-visible{outline:3px solid #003b2d;outline-offset:3px}
+
+/* VIP itinerary cards with visual service cues. */
+.vip-application-grid article{position:relative;isolation:isolate;overflow:hidden;border:1px solid #286553;background:#003b2d;box-shadow:none}
+.vip-application-grid article:after{position:absolute;z-index:1;inset:0;background:linear-gradient(180deg,#00291d35 0%,#00291de8 61%,#00291d 100%);content:""}
+.vip-application-grid .vip-application-image{z-index:0;object-fit:cover}
+.vip-application-grid article>*:not(.vip-application-image){position:relative;z-index:2}
+.vip-application-grid svg{color:#e5c378}
+.vip-application-grid h3{color:#fffdf8}
+.vip-application-grid p{color:#e4ece8}
+.vip-application-grid .vip-application-button{display:flex;width:100%;min-height:42px;align-items:center;justify-content:center;margin-top:auto;border-radius:7px;background:#e5c378;color:#00291d;text-align:center;font-size:12px;font-weight:700;transition:transform .2s ease,background-color .2s ease,color .2s ease}
+.vip-application-grid .vip-application-button:hover{background:#fffdf8;color:#003b2d;transform:translateY(-2px)}
+.vip-application-grid .vip-application-button:focus-visible{outline:3px solid #e5c378;outline-offset:3px}
+
+/* Custom itinerary cards with relevant imagery and CTAs. */
+.custom-option-grid article{position:relative;isolation:isolate;overflow:hidden;border-color:#286553;background:#003b2d}
+.custom-option-grid article:after{position:absolute;z-index:1;inset:0;background:linear-gradient(180deg,#00291d35 0%,#00291de8 62%,#00291d 100%);content:""}
+.custom-option-grid .custom-option-image{z-index:0;object-fit:cover}
+.custom-option-grid article>*:not(.custom-option-image){position:relative;z-index:2}
+.custom-option-grid svg{color:#e5c378}
+.custom-option-grid h3{color:#fffdf8}
+.custom-option-grid p{color:#e4ece8}
+.custom-option-grid .custom-option-button{display:flex;width:100%;min-height:42px;align-items:center;justify-content:center;margin-top:auto;border-radius:7px;background:#e5c378;color:#00291d;text-align:center;font-size:13px;font-weight:700;transition:transform .2s ease,background-color .2s ease,color .2s ease}
+.custom-option-grid .custom-option-button:hover{background:#fffdf8;color:#003b2d;transform:translateY(-2px)}
+.custom-option-grid .custom-option-button:focus-visible{outline:3px solid #e5c378;outline-offset:3px}
+
+/* Small visual separation after the fleet hero. */
+.fleet-premium .fleet-grid{padding-top:18px}

@@ -9,7 +9,7 @@ import { siteConfig } from "@/lib/site-config";
 
 const menus = [
   { label: "Our Services", links: [["Airport Transfers", "/airport-transfers"], ["Intercity Transfers", "/intercity-transfers"], ["Private Ziyarat Transportation", "/ziyarat-transport"], ["Family & Group Transportation", "/family-group-transportation"]] },
-  { label: "Routes", links: [["Jeddah Airport to Makkah", "/jeddah-airport-to-makkah-transfer"], ["Makkah to Madinah", "/makkah-to-madinah-private-transfer"], ["Madinah to Makkah", "/madinah-to-makkah-private-transfer"], ["Madinah Airport Transfers", "/madinah-airport-transfers"], ["Taif Transportation", "/taif-private-transport"], ["View All Routes", "/intercity-transfers"]] },
+  { label: "Routes", links: [["Jeddah Airport to Makkah", "/jeddah-airport-to-makkah-transfer"], ["Makkah to Madinah", "/makkah-to-madinah-private-transfer"], ["Madinah to Makkah", "/madinah-to-makkah-private-transfer"], ["Madinah Airport Transfers", "/madinah-airport-transfers"], ["Taif Transportation", "/taif-private-transport"]] },
   { label: "Ziyarat", links: [["Makkah Ziyarat", "/makkah-ziyarat-transport"], ["Madinah Ziyarat", "/madinah-ziyarat-transport"], ["Taif Ziyarat", "/taif-ziyarat"]] },
   { label: "Umrah Transport", links: [["Family Umrah Transport Packages", "/family-umrah-transport-packages"], ["Elderly-Friendly Umrah Transport", "/elderly-friendly-umrah-transport"], ["VIP Family Umrah Transport", "/vip-umrah-family-transport"], ["Custom Journey Planning", "/custom-journey-planning"]] },
 ];
@@ -111,7 +111,6 @@ export function BamNavigation() {
             </div>
           ))}
           <Link className={isActivePath("/our-fleet") ? "active" : undefined} href="/our-fleet" onClick={handleNavigation}>Our Fleet</Link>
-          <Link className={isActivePath("/why-bam") ? "active" : undefined} href="/why-bam" onClick={handleNavigation}>Why BAM</Link>
           <Link className={isActivePath("/partner-with-bam") ? "active" : undefined} href="/partner-with-bam" onClick={handleNavigation}>Partner With BAM</Link>
           <Link className={isActivePath("/contact") ? "active" : undefined} href="/contact" onClick={handleNavigation}>Contact</Link>
         </nav>
@@ -126,7 +125,6 @@ export function BamNavigation() {
         ))}
         <Link className={isActivePath("/") ? "active" : undefined} href="/" onClick={handleNavigation}>Home</Link>
         <Link className={isActivePath("/our-fleet") ? "active" : undefined} href="/our-fleet" onClick={handleNavigation}>Our Fleet</Link>
-        <Link className={isActivePath("/why-bam") ? "active" : undefined} href="/why-bam" onClick={handleNavigation}>Why BAM</Link>
         <Link className={isActivePath("/partner-with-bam") ? "active" : undefined} href="/partner-with-bam" onClick={handleNavigation}>Partner With BAM</Link>
         <Link className={isActivePath("/contact") ? "active" : undefined} href="/contact" onClick={handleNavigation}>Contact</Link>
         <Link className="nav-button" href="/contact#enquiry" onClick={handleNavigation}>Book Your Transport</Link>

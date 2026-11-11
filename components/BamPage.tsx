@@ -11,10 +11,10 @@ export type BamPageData = {
 };
 
 const fleetVehicles = [
-  { name: "GMC Yukon XL", description: "Luxury comfort for private family journeys.", image: "/fleet-gmc-yukon-xl.png", details: ["Private family travel", "Luggage reviewed", "Premium comfort"] },
-  { name: "Hyundai Staria", description: "Flexible family space for comfortable travel.", image: "/fleet-hyundai-staria.png", details: ["Family space", "Luggage reviewed", "Comfort focused"] },
-  { name: "Toyota Hiace", description: "A spacious choice for larger groups.", image: "/fleet-toyota-hiace.png", details: ["Larger groups", "Luggage reviewed", "Route support"] },
-  { name: "Sprinter", description: "Spacious private transport for larger families and connected journeys.", image: "/fleet-sprinter.png", details: ["Larger groups", "Luggage reviewed", "Multi-stop support"] },
+  { name: "GMC Yukon XL", description: "Luxury comfort for private family journeys.", image: "/fleet-gmc-yukon-xl.webp", details: ["Private family travel", "Luggage reviewed", "Premium comfort"] },
+  { name: "Hyundai Staria", description: "Flexible family space for comfortable travel.", image: "/fleet-hyundai-staria.webp", details: ["Family space", "Luggage reviewed", "Comfort focused"] },
+  { name: "Toyota Hiace", description: "A spacious choice for larger groups.", image: "/fleet-toyota-hiace.webp", details: ["Larger groups", "Luggage reviewed", "Route support"] },
+  { name: "Sprinter", description: "Spacious private transport for larger families and connected journeys.", image: "/fleet-sprinter.webp", details: ["Larger groups", "Luggage reviewed", "Multi-stop support"] },
 ];
 
 export function BamPage({ data }: { data: BamPageData }) {

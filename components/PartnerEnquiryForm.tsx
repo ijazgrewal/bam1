@@ -31,10 +31,6 @@ export function PartnerEnquiryForm() {
     setStatus("submitting");
     try {
       await submitLead({
-        tripType: "B2B partnership enquiry",
-        pickup: "Partner service coverage",
-        destination: String(data.get("businessRequirements") ?? "") || "To be discussed",
-        passengers: String(data.get("monthlyRequests") ?? ""),
         name: String(data.get("name") ?? "").trim(),
         phone,
         email: String(data.get("email") ?? "").trim(),
@@ -42,9 +38,8 @@ export function PartnerEnquiryForm() {
         monthlyRequests: String(data.get("monthlyRequests") ?? ""),
         agencyName: String(data.get("agencyName") ?? "").trim(),
         businessRequirements: String(data.get("businessRequirements") ?? "").trim(),
-        notes: String(data.get("businessRequirements") ?? "").trim(),
         source: "partner" as const,
-        consent: true,
+        consent: Boolean(data.get("consent")),
         website: String(data.get("website") ?? ""),
       });
       form.reset();
