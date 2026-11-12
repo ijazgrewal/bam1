@@ -1,5 +1,6 @@
 const configuredUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
-if (process.env.VERCEL && !configuredUrl) {
-  throw new Error("NEXT_PUBLIC_SITE_URL must be set for Vercel deployments.");
-}
-export const siteUrl = (configuredUrl || "http://localhost:3000").replace(/\/$/, "");
+const vercelUrl = process.env.VERCEL_URL?.trim();
+
+// A manually configured canonical domain takes priority. Vercel deployments can
+// build without manual environment setup by falling back to VERCEL_URL.
+export const siteUrl = (configuredUrl || (vercelUrl ? `https://${vercelUrl}` : "http://localhost:3000")).replace(/\/$/, "");
