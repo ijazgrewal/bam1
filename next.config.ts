@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 const scriptSource = process.env.NODE_ENV === "production" ? "'self' 'unsafe-inline'" : "'self' 'unsafe-inline' 'unsafe-eval'";
 
 const nextConfig: NextConfig = {
+  devIndicators: false,
   async headers() {
     return [
       {
