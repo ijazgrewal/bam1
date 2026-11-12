@@ -10,6 +10,7 @@ import "./contact-pages.css";
 import "./dropdown-fix.css";
 import "./bam-commercial.css";
 import "./umrah-transport-tweaks.css";
+import "./blog.css";
 import { siteUrl } from "../lib/site-url";
 import { siteConfig } from "@/lib/site-config";
 import { BamNavigation } from "@/components/BamNavigation";

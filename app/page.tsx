@@ -73,11 +73,15 @@ const bookingSteps = [
 ];
 
 export default function Home() {
-  const structuredData = { "@context": "https://schema.org", "@type": "WebSite", name: "BAM Transport", url: `${siteUrl}/`, description: metadata.description };
+  const structuredData = { "@context": "https://schema.org", "@graph": [
+    { "@type": "WebSite", name: "BAM Transport", url: `${siteUrl}/`, description: metadata.description },
+    { "@type": "Organization", name: "BAM Transport", url: `${siteUrl}/`, logo: `${siteUrl}/bam-logo.png`, telephone: "+966 50 713 5765", sameAs: ["https://www.facebook.com/profile.php?id=61572543783897&mibextid=wwXIfr&rdid=tzJ0M1fOfTShW03z&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1DFy8FG5xy%2F%3Fmibextid%3DwwXIfr", "https://www.instagram.com/barakah.al.madinah"] },
+    { "@type": "FAQPage", mainEntity: faq.map(([name, text]) => ({ "@type": "Question", name, acceptedAnswer: { "@type": "Answer", text } })) },
+  ] };
   return <main className="stitch-page commercial-home">
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} />
     <section className="commercial-hero">
-      <div><p>Private Umrah mobility • Saudi Arabia</p><h1>Premium Family Umrah Transport in Saudi Arabia</h1><h2>Your journey deserves more than a ride.</h2><span>Travel comfortably across Jeddah, Makkah Mukarramah, Madinah Munawwarah, and Taif with private family transportation, personalised coordination, and support throughout your journey.</span><div><Link className="gold-button" href="/contact">Plan Your Family Journey　→</Link><Link className="dark-button" href="#fleet">Explore Our Fleet</Link></div></div>
+      <div><p>Private Umrah mobility • Saudi Arabia</p><h1>Premium Family Umrah Transport in Saudi Arabia</h1><span>Private family transport across Jeddah, Makkah Mukarramah, Madinah Munawwarah and Taif, with personalized journey coordination.</span><div className="hero-actions"><Link className="gold-button" href="/contact">Plan Your Family Journey　→</Link><Link className="dark-button" href="#fleet">Explore Our Fleet</Link></div><Link className="mobile-hero-quote" href="/contact#enquiry">Get a Free Quote</Link></div>
       <HeroLeadForm />
     </section>
     <section className="home-section why"><div className="section-heading"><p>Why families choose BAM</p><h2>Careful coordination at every stage.</h2><span>Private transport is only one part of the journey. Clear communication and thoughtful planning make the difference.</span></div><div className="four-grid why-grid">{familyBenefits.map((benefit, index) => { const Icon = benefit.icon; return <article className="why-card flex flex-col" key={benefit.title}><Image className="mb-6 h-36 w-full rounded-lg object-cover" src={benefit.image} alt={benefit.imageAlt} width={960} height={540} sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 25vw" /><div className="why-card-top"><span className="why-card-icon"><Icon aria-hidden="true" size={22} strokeWidth={1.8} /></span><b>0{index + 1}</b></div><h3>{benefit.title}</h3><p>{benefit.text}</p></article>; })}</div></section>
