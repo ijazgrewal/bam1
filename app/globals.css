@@ -31,6 +31,12 @@ body { color: var(--ink); font-size: 16px; }
 .card-text-link:hover, .card-text-links a:hover { color: var(--green-900); text-decoration: underline; text-underline-offset: 3px; }
 .fleet-card-cta { display: inline-flex; min-height: 46px; width: 168px; align-items: center; justify-content: center; gap: .45rem; margin-top: auto; padding: .75rem 1rem; border-radius: .375rem; background: var(--gold-500); color: var(--green-900); font-size: .8125rem; font-weight: 800; text-decoration: none; transition: background-color .2s ease, transform .2s ease; }
 .fleet-card-cta:hover { background: var(--gold-600); transform: translateY(-1px); }
+
+/* One consistent CTA arrow across links and buttons, including Lucide arrow icons. */
+a:has(> svg.lucide-arrow-right), button:has(> svg.lucide-arrow-right) { display: inline-flex; align-items: center; gap: .5rem; }
+a:has(> svg.lucide-arrow-right)::after, button:has(> svg.lucide-arrow-right)::after { content: "→"; font-size: 1.1em; font-weight: 700; line-height: 1; }
+a:has(> svg.lucide-arrow-right) > svg.lucide-arrow-right, button:has(> svg.lucide-arrow-right) > svg.lucide-arrow-right { display: none; }
+a > b:last-child, button > b:last-child, a > span[aria-hidden="true"]:last-child, button > span[aria-hidden="true"]:last-child { display: inline-block; font-weight: 700; line-height: 1; }
 @keyframes bam-tooltip { 0%, 75% { opacity: 1; } 100% { opacity: 0; pointer-events: none; } }
 @media (max-width: 767px) {
   body { padding-bottom: calc(4.25rem + env(safe-area-inset-bottom)); }
