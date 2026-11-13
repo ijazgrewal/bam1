@@ -39,6 +39,8 @@ a > b:last-child, button > b:last-child, a > span[aria-hidden="true"]:last-child
 .partner-page > section:first-of-type a[href="#partner-enquiry"], .partner-page > section:first-of-type a[href*="wa.me"] { width: 14rem; }
 .partner-page a.bg-\[\#E5C378\]:hover { background-color: #d2a343 !important; color: #00291d !important; }
 .partner-page a.bg-\[\#1A725B\]:hover { background-color: #14503d !important; color: #fff !important; }
+.partner-page a[class*="bg-[#E5C378]"]:hover { background-color: #d2a343 !important; color: #00291d !important; }
+.partner-page a[class*="bg-[#E5C378]"]:hover * { color: #00291d !important; }
 @keyframes bam-tooltip { 0%, 75% { opacity: 1; } 100% { opacity: 0; pointer-events: none; } }
 @media (max-width: 767px) {
   body { padding-bottom: calc(4.25rem + env(safe-area-inset-bottom)); }
