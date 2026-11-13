@@ -10,7 +10,7 @@ const faqs = [
   ["Do I need to know the right vehicle?", "No. Leave the vehicle preference as Let BAM Recommend and the team will review suitable options around your group and route."],
 ];
 
-export function PremiumContactPage() {
+export function PremiumContactPage({ initialVehicle }: { initialVehicle?: string }) {
   const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}`;
   const schema = { "@context": "https://schema.org", "@type": "ContactPage", name: `Contact ${siteConfig.name}`, description: "Request private Umrah transport in Saudi Arabia.", mainEntity: { "@type": "LocalBusiness", name: siteConfig.name, telephone: siteConfig.phone, contactPoint: { "@type": "ContactPoint", telephone: siteConfig.phone, contactType: "customer service", availableLanguage: "English" } } };
 
@@ -31,7 +31,7 @@ export function PremiumContactPage() {
         <div className="mt-6 border-t border-[#E7DDCA] pt-5"><ShieldCheck className="size-6 text-[#A87808]" aria-hidden="true" /><h3 className="mt-3 font-serif text-xl text-[#00291D]">Your details, handled carefully</h3><p className="mt-2 text-sm leading-6 text-[#596A63]">Do not include passport, ID or payment-card details in your enquiry.</p></div>
         <nav aria-label="Explore BAM services"><Link href="/services">Explore services →</Link><Link href="/routes">Explore private routes →</Link><Link href="/fleet">View approved fleet →</Link></nav>
       </aside>
-      <EnquiryForm />
+      <EnquiryForm initialVehicle={initialVehicle} />
     </section>
     <section className="mx-auto max-w-6xl px-6 pb-16 sm:px-8 lg:pb-24">
       <div className="rounded-2xl bg-[#F7F2E8] p-7 sm:p-10"><p className="text-xs font-bold uppercase tracking-[.16em] text-[#A87808]">Contact FAQs</p><h2 className="mt-3 font-serif text-4xl leading-tight text-[#00291D]">Helpful answers before you enquire.</h2><div className="mt-7 grid gap-3 xl:grid-cols-2">{faqs.map(([question, answer]) => <details className="group rounded-xl border border-[#E1D5BC] bg-white p-5" key={question}><summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-serif text-lg text-[#00291D]"><span>{question}</span><Plus className="size-5 shrink-0 text-[#A87808] group-open:hidden" aria-hidden="true" /><Minus className="hidden size-5 shrink-0 text-[#A87808] group-open:block" aria-hidden="true" /></summary><p className="mt-3 text-sm leading-6 text-[#596A63]">{answer}</p></details>)}</div></div>

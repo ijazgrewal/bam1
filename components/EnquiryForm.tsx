@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import { submitLead } from "@/lib/lead-submit";
 
 type Status = "idle" | "submitting" | "sent" | "error";
@@ -9,13 +9,12 @@ const locations = ["Jeddah Airport", "Makkah Mukarramah", "Madinah Munawwarah", 
 const input = "!mt-2 !min-h-12 !rounded-lg !border-[#DCD2BE] !bg-white px-3.5 text-[15px] !text-[#203B30] shadow-sm outline-none transition focus:!border-[#A87808] focus:ring-2 focus:ring-[#E5C378]/45";
 const guidance: Record<string, string> = { "Airport transfer": "Choose the airport and your confirmed hotel or destination.", "Intercity transfer": "Share your hotel or meeting point in each city.", "Ziyarat transport": "Include your preferred starting point and destination.", "Family transport package": "Tell BAM where your family journey begins and ends.", "Custom journey": "Start with your first pickup and final destination; use notes for additional stops." };
 
-export function EnquiryForm() {
+export function EnquiryForm({ initialVehicle = "Let BAM Recommend" }: { initialVehicle?: string }) {
   const [status, setStatus] = useState<Status>("idle");
   const [service, setService] = useState("");
-  const [preferredVehicle, setPreferredVehicle] = useState("Let BAM Recommend");
+  const [preferredVehicle, setPreferredVehicle] = useState(initialVehicle);
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
-  useEffect(() => { setPreferredVehicle(new URLSearchParams(window.location.search).get("vehicle") ?? "Let BAM Recommend"); }, []);
   const error = (name: string) => errors[name] && <p className="mt-1 text-xs font-medium text-[#9A3229]" role="alert">{errors[name]}</p>;
 
   async function submit(event: FormEvent<HTMLFormElement>) {

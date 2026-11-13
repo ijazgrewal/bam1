@@ -43,7 +43,7 @@ export function HeroLeadForm() {
     <aside className="hero-lead-card">
       <p>Private transport support</p>
       <h2>Get a Free Quote</h2>
-      <span>Share your journey details and BAM will respond on WhatsApp within <strong>TODO(BAM): response time</strong>.</span>
+      <span>Share your journey details and BAM will reply on WhatsApp.</span>{/* TODO(BAM): add confirmed WhatsApp response-time SLA. */}
       <form onSubmit={submit}>
         <div className="hero-lead-grid">
           <label className="hero-lead-full"><span>Transport type</span><select name="tripType" defaultValue="Airport transfer"><option>Airport transfer</option><option>Intercity transfer</option><option>Ziyarat transport</option></select></label>
