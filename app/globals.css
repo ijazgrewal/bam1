@@ -29,6 +29,8 @@ body { color: var(--ink); font-size: 16px; }
 .card-text-links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: auto; padding-top: 1.25rem; }
 .card-text-link, .card-text-links a { color: #76570d; font-size: .875rem; font-weight: 800; text-decoration: none; }
 .card-text-link:hover, .card-text-links a:hover { color: var(--green-900); text-decoration: underline; text-underline-offset: 3px; }
+.fleet-card-cta { display: inline-flex; min-height: 46px; width: 168px; align-items: center; justify-content: center; gap: .45rem; margin-top: auto; padding: .75rem 1rem; border-radius: .375rem; background: var(--gold-500); color: var(--green-900); font-size: .8125rem; font-weight: 800; text-decoration: none; transition: background-color .2s ease, transform .2s ease; }
+.fleet-card-cta:hover { background: var(--gold-600); transform: translateY(-1px); }
 @keyframes bam-tooltip { 0%, 75% { opacity: 1; } 100% { opacity: 0; pointer-events: none; } }
 @media (max-width: 767px) {
   body { padding-bottom: calc(4.25rem + env(safe-area-inset-bottom)); }
