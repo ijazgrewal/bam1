@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { submitLead } from "@/lib/lead-submit";
 
 type Status = "idle" | "submitting" | "sent" | "error";
@@ -11,11 +10,12 @@ const input = "!mt-2 !min-h-12 !rounded-lg !border-[#DCD2BE] !bg-white px-3.5 te
 const guidance: Record<string, string> = { "Airport transfer": "Choose the airport and your confirmed hotel or destination.", "Intercity transfer": "Share your hotel or meeting point in each city.", "Ziyarat transport": "Include your preferred starting point and destination.", "Family transport package": "Tell BAM where your family journey begins and ends.", "Custom journey": "Start with your first pickup and final destination; use notes for additional stops." };
 
 export function EnquiryForm() {
-  const searchParams = useSearchParams();
   const [status, setStatus] = useState<Status>("idle");
   const [service, setService] = useState("");
+  const [preferredVehicle, setPreferredVehicle] = useState("Let BAM Recommend");
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  useEffect(() => { setPreferredVehicle(new URLSearchParams(window.location.search).get("vehicle") ?? "Let BAM Recommend"); }, []);
   const error = (name: string) => errors[name] && <p className="mt-1 text-xs font-medium text-[#9A3229]" role="alert">{errors[name]}</p>;
 
   async function submit(event: FormEvent<HTMLFormElement>) {
@@ -42,7 +42,7 @@ export function EnquiryForm() {
       <label htmlFor="passengers">Passengers *<select className={input} id="passengers" name="passengers" defaultValue=""><option value="" disabled>Select passenger count</option><option>1–3</option><option>4–6</option><option>7–11</option><option>12+</option></select>{error("passengers")}</label>
       {service && <p className="full -mt-1 rounded-lg bg-[#F7F2E8] px-4 py-3 text-sm leading-6 text-[#52655D]">{guidance[service]}</p>}
       <label htmlFor="pickup">Pickup location *<input className={input} id="pickup" name="pickup" list="bam-locations" placeholder="Search or enter pickup" />{error("pickup")}</label><label htmlFor="destination">Destination *<input className={input} id="destination" name="destination" list="bam-locations" placeholder="Search or enter destination" />{error("destination")}</label>
-      <label htmlFor="travelDate">Travel date *<input className={input} id="travelDate" name="travelDate" type="date" min={new Date().toISOString().slice(0, 10)} />{error("travelDate")}</label><label htmlFor="vehicle">Vehicle preference <span className="font-normal text-[#596A63]">(optional)</span><select className={input} id="vehicle" name="vehicle" defaultValue={searchParams.get("vehicle") ?? "Let BAM Recommend"}><option>Let BAM Recommend</option><option>GMC Yukon XL</option><option>Hyundai Staria</option><option>Toyota Hiace</option><option>Mercedes-Benz Sprinter</option></select></label>
+      <label htmlFor="travelDate">Travel date *<input className={input} id="travelDate" name="travelDate" type="date" min={new Date().toISOString().slice(0, 10)} />{error("travelDate")}</label><label htmlFor="vehicle">Vehicle preference <span className="font-normal text-[#596A63]">(optional)</span><select className={input} id="vehicle" name="vehicle" value={preferredVehicle} onChange={(event) => setPreferredVehicle(event.target.value)}><option>Let BAM Recommend</option><option>GMC Yukon XL</option><option>Hyundai Staria</option><option>Toyota Hiace</option><option>Mercedes-Benz Sprinter</option></select></label>
       <label htmlFor="notes" className="full">Additional notes <span className="font-normal text-[#596A63]">(optional)</span><textarea className={`${input} !min-h-28 py-3`} id="notes" name="notes" rows={4} placeholder="Add practical family requirements or requested stops. Do not include passport, ID, or payment-card details." /></label>
     </div></fieldset>
     <label className="mt-6 flex items-start gap-3 text-sm leading-6 text-[#40584D]" htmlFor="consent"><input id="consent" name="consent" type="checkbox" className="mt-1 size-4 shrink-0 accent-[#00291D]" /><span>I agree that BAM may use these details to review my transport enquiry and contact me about it. See the <Link className="font-semibold text-[#705516] underline underline-offset-2" href="/privacy-policy">Privacy Policy</Link>. *</span></label>{error("consent")}<input className="sr-only" tabIndex={-1} name="website" autoComplete="off" aria-hidden="true" />
