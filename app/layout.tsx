@@ -12,6 +12,7 @@ import "./dropdown-fix.css";
 import "./bam-commercial.css";
 import "./umrah-transport-tweaks.css";
 import "./blog.css";
+import "./footer-fix.css";
 import { siteUrl } from "../lib/site-url";
 import { siteConfig, whatsappUrl } from "@/lib/site-config";
 import { BamNavigation } from "@/components/BamNavigation";
