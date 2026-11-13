@@ -19,7 +19,7 @@ export function BrandName() {
       let node = walker.nextNode();
       while (node) {
         const parent = node.parentElement;
-        if (parent && !["SCRIPT", "STYLE"].includes(parent.tagName) && previousBrand.test(node.textContent ?? "")) nodes.push(node as Text);
+        if (parent && !parent.closest("[data-brand-keep]") && !["SCRIPT", "STYLE"].includes(parent.tagName) && previousBrand.test(node.textContent ?? "")) nodes.push(node as Text);
         previousBrand.lastIndex = 0;
         node = walker.nextNode();
       }
