@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "BAM Transport",
+  name: "Barakah Al Madinah",
   tagline: "Private Umrah transport across Saudi Arabia",
   phone: "+966 50 713 5765",
   whatsappNumber: "966507135765",
