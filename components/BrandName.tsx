@@ -12,6 +12,9 @@ function replaceBrand(value: string) {
 export function BrandName() {
   useEffect(() => {
     document.title = replaceBrand(document.title);
+    if (window.location.pathname === "/partner-with-bam") {
+      document.querySelector<HTMLAnchorElement>('a[href="#partner-enquiry"]')?.replaceChildren("Become a Partner");
+    }
 
     const replaceTextNodes = (root: Node) => {
       const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
