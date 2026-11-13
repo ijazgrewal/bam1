@@ -57,7 +57,7 @@ export function BamFooter() {
       <section><h3>Popular Routes</h3><Link href="/jeddah-airport-to-makkah-transfer">Jeddah to Makkah</Link><Link href="/makkah-to-madinah-private-transfer">Makkah to Madinah</Link><Link href="/madinah-airport-transfers">Madinah Airport</Link></section>
       <section><h3>Company</h3><Link href="/about-us">About BAM</Link><Link href="/partner-with-bam"><span data-brand-keep>Partner With BAM</span></Link><Link href="/contact">Contact</Link><Link href="/faqs">FAQs</Link></section>
     </section>
-    <div className="mx-auto mt-4 flex w-full max-w-[1130px] flex-col items-center gap-2 border-t border-[#e5c378]/35 pt-4 text-center text-[13px] leading-5 text-[#f4f0e4]">
+    <div className="mx-auto mt-4 flex w-full max-w-[1130px] flex-col items-center gap-2 border-t border-[#e5c378]/35 pt-4 text-center text-[13px] leading-5 text-[#f4f0e4] sm:flex-row sm:justify-between sm:text-left">
       <span>© {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</span>
       <a className="w-fit underline underline-offset-2 transition-colors hover:text-[#e5c378] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#e5c378]" href="https://digiaura360.com" target="_blank" rel="noopener nofollow">Designed by DigiAura360</a>
     </div>
