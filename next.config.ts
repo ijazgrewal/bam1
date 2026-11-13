@@ -15,6 +15,11 @@ const nextConfig: NextConfig = {
           { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
         ],
       },
+      {
+        source: "/(.*)",
+        has: [{ type: "host", value: ".*\\.vercel\\.app" }],
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
     ];
   },
   async redirects() {
@@ -25,6 +30,7 @@ const nextConfig: NextConfig = {
       { source: "/packages", destination: "/family-umrah-transport-packages", permanent: true },
       { source: "/ziyarat-tours", destination: "/ziyarat-transport", permanent: true },
       { source: "/travel-partners", destination: "/partner-with-bam", permanent: true },
+      { source: "/our-fleet", destination: "/fleet", permanent: true },
     ];
   },
 };

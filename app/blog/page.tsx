@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   description: "Practical BAM Transport guidance for Umrah airport transfers, intercity transport, family journeys and ziyarat planning in Saudi Arabia.",
   alternates: { canonical: "/blog" },
   openGraph: { title: "Umrah Travel Tips & Transport Guides", description: "Practical planning guidance for airport transfers, intercity travel, family Umrah journeys and ziyarat.", url: "/blog" },
+  robots: { index: false, follow: true },
 };
 
 export default function BlogPage() {
